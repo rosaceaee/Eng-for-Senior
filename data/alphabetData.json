@@ -1,0 +1,210 @@
+[
+  {
+    "letter": "A",
+    "words": [
+      { "english": "Apple", "korean": "사과", "emoji": "🍎" },
+      { "english": "Arm", "korean": "팔", "emoji": "💪" },
+      { "english": "Ant", "korean": "개미", "emoji": "🐜" }
+    ]
+  },
+  {
+    "letter": "B",
+    "words": [
+      { "english": "Bread", "korean": "빵", "emoji": "🍞" },
+      { "english": "Bird", "korean": "새", "emoji": "🐦" },
+      { "english": "Book", "korean": "책", "emoji": "📚" }
+    ]
+  },
+  {
+    "letter": "C",
+    "words": [
+      { "english": "Cat", "korean": "고양이", "emoji": "🐱" },
+      { "english": "Cup", "korean": "컵", "emoji": "☕" },
+      { "english": "Car", "korean": "자동차", "emoji": "🚗" }
+    ]
+  },
+  {
+    "letter": "D",
+    "words": [
+      { "english": "Dog", "korean": "강아지", "emoji": "🐶" },
+      { "english": "Door", "korean": "문", "emoji": "🚪" },
+      { "english": "Drum", "korean": "드럼", "emoji": "🥁" }
+    ]
+  },
+  {
+    "letter": "E",
+    "words": [
+      { "english": "Egg", "korean": "달걀", "emoji": "🥚" },
+      { "english": "Eye", "korean": "눈", "emoji": "👁️" },
+      { "english": "Ear", "korean": "귀", "emoji": "👂" }
+    ]
+  },
+  {
+    "letter": "F",
+    "words": [
+      { "english": "Fish", "korean": "물고기", "emoji": "🐟" },
+      { "english": "Flower", "korean": "꽃", "emoji": "🌸" },
+      { "english": "Fork", "korean": "포크", "emoji": "🍴" }
+    ]
+  },
+  {
+    "letter": "G",
+    "words": [
+      { "english": "Grape", "korean": "포도", "emoji": "🍇" },
+      { "english": "Glass", "korean": "유리잔", "emoji": "🥛" },
+      { "english": "Gate", "korean": "대문", "emoji": "🚧" }
+    ]
+  },
+  {
+    "letter": "H",
+    "words": [
+      { "english": "Hat", "korean": "모자", "emoji": "🎩" },
+      { "english": "Hand", "korean": "손", "emoji": "✋" },
+      { "english": "House", "korean": "집", "emoji": "🏠" }
+    ]
+  },
+  {
+    "letter": "I",
+    "words": [
+      { "english": "Ice", "korean": "얼음", "emoji": "🧊" },
+      { "english": "Iron", "korean": "다리미", "emoji": "🔧" },
+      { "english": "Island", "korean": "섬", "emoji": "🏝️" }
+    ]
+  },
+  {
+    "letter": "J",
+    "words": [
+      { "english": "Juice", "korean": "주스", "emoji": "🧃" },
+      { "english": "Jacket", "korean": "재킷", "emoji": "🧥" },
+      { "english": "Jar", "korean": "유리병", "emoji": "🫙" }
+    ]
+  },
+  {
+    "letter": "K",
+    "words": [
+      { "english": "Key", "korean": "열쇠", "emoji": "🔑" },
+      { "english": "King", "korean": "왕", "emoji": "👑" },
+      { "english": "Kite", "korean": "연", "emoji": "🪁" }
+    ]
+  },
+  {
+    "letter": "L",
+    "words": [
+      { "english": "Lemon", "korean": "레몬", "emoji": "🍋" },
+      { "english": "Leaf", "korean": "나뭇잎", "emoji": "🍃" },
+      { "english": "Lion", "korean": "사자", "emoji": "🦁" }
+    ]
+  },
+  {
+    "letter": "M",
+    "words": [
+      { "english": "Moon", "korean": "달", "emoji": "🌙" },
+      { "english": "Milk", "korean": "우유", "emoji": "🥛" },
+      { "english": "Mouse", "korean": "쥐", "emoji": "🐭" }
+    ]
+  },
+  {
+    "letter": "N",
+    "words": [
+      { "english": "Nose", "korean": "코", "emoji": "👃" },
+      { "english": "Night", "korean": "밤", "emoji": "🌃" },
+      { "english": "Nest", "korean": "둥지", "emoji": "🪺" }
+    ]
+  },
+  {
+    "letter": "O",
+    "words": [
+      { "english": "Orange", "korean": "오렌지", "emoji": "🍊" },
+      { "english": "Ocean", "korean": "바다", "emoji": "🌊" },
+      { "english": "Owl", "korean": "올빼미", "emoji": "🦉" }
+    ]
+  },
+  {
+    "letter": "P",
+    "words": [
+      { "english": "Pen", "korean": "펜", "emoji": "🖊️" },
+      { "english": "Phone", "korean": "전화기", "emoji": "📱" },
+      { "english": "Pizza", "korean": "피자", "emoji": "🍕" }
+    ]
+  },
+  {
+    "letter": "Q",
+    "words": [
+      { "english": "Queen", "korean": "여왕", "emoji": "👸" },
+      { "english": "Quilt", "korean": "이불", "emoji": "🛏️" },
+      { "english": "Queue", "korean": "줄", "emoji": "🚶" }
+    ]
+  },
+  {
+    "letter": "R",
+    "words": [
+      { "english": "Rain", "korean": "비", "emoji": "🌧️" },
+      { "english": "Ring", "korean": "반지", "emoji": "💍" },
+      { "english": "Rose", "korean": "장미", "emoji": "🌹" }
+    ]
+  },
+  {
+    "letter": "S",
+    "words": [
+      { "english": "Sun", "korean": "태양", "emoji": "☀️" },
+      { "english": "Sock", "korean": "양말", "emoji": "🧦" },
+      { "english": "Star", "korean": "별", "emoji": "⭐" }
+    ]
+  },
+  {
+    "letter": "T",
+    "words": [
+      { "english": "Tree", "korean": "나무", "emoji": "🌳" },
+      { "english": "Train", "korean": "기차", "emoji": "🚂" },
+      { "english": "Table", "korean": "탁자", "emoji": "🪑" }
+    ]
+  },
+  {
+    "letter": "U",
+    "words": [
+      { "english": "Umbrella", "korean": "우산", "emoji": "☂️" },
+      { "english": "Uncle", "korean": "삼촌", "emoji": "👨" },
+      { "english": "Uniform", "korean": "제복", "emoji": "👔" }
+    ]
+  },
+  {
+    "letter": "V",
+    "words": [
+      { "english": "Vase", "korean": "꽃병", "emoji": "💐" },
+      { "english": "Vest", "korean": "조끼", "emoji": "🦺" },
+      { "english": "Violin", "korean": "바이올린", "emoji": "🎻" }
+    ]
+  },
+  {
+    "letter": "W",
+    "words": [
+      { "english": "Water", "korean": "물", "emoji": "💧" },
+      { "english": "Watch", "korean": "시계", "emoji": "⌚" },
+      { "english": "Wind", "korean": "바람", "emoji": "🌬️" }
+    ]
+  },
+  {
+    "letter": "X",
+    "words": [
+      { "english": "X-ray", "korean": "엑스레이", "emoji": "🩻" },
+      { "english": "Xylophone", "korean": "실로폰", "emoji": "🎵" },
+      { "english": "Fox", "korean": "여우", "emoji": "🦊" }
+    ]
+  },
+  {
+    "letter": "Y",
+    "words": [
+      { "english": "Yarn", "korean": "실", "emoji": "🧶" },
+      { "english": "Yard", "korean": "마당", "emoji": "🌿" },
+      { "english": "Yolk", "korean": "노른자", "emoji": "🥚" }
+    ]
+  },
+  {
+    "letter": "Z",
+    "words": [
+      { "english": "Zebra", "korean": "얼룩말", "emoji": "🦓" },
+      { "english": "Zoo", "korean": "동물원", "emoji": "🦒" },
+      { "english": "Zero", "korean": "영", "emoji": "0️⃣" }
+    ]
+  }
+]

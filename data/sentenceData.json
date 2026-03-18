@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "korean": "공부를 할 시간이야.",
+    "english": "It is time to study.",
+    "blocks": ["It", "is", "time", "to", "study"]
+  },
+  {
+    "id": 2,
+    "korean": "밥을 먹을 시간이야.",
+    "english": "It is time to eat.",
+    "blocks": ["It", "is", "time", "to", "eat"]
+  },
+  {
+    "id": 3,
+    "korean": "잘 시간이야.",
+    "english": "It is time to sleep.",
+    "blocks": ["It", "is", "time", "to", "sleep"]
+  },
+  {
+    "id": 4,
+    "korean": "나는 물을 마셔.",
+    "english": "I drink water.",
+    "blocks": ["I", "drink", "water"]
+  },
+  {
+    "id": 5,
+    "korean": "나는 책을 읽어.",
+    "english": "I read a book.",
+    "blocks": ["I", "read", "a", "book"]
+  },
+  {
+    "id": 6,
+    "korean": "나는 음악을 들어.",
+    "english": "I listen to music.",
+    "blocks": ["I", "listen", "to", "music"]
+  },
+  {
+    "id": 7,
+    "korean": "날씨가 맑아.",
+    "english": "The weather is clear.",
+    "blocks": ["The", "weather", "is", "clear"]
+  },
+  {
+    "id": 8,
+    "korean": "오늘은 월요일이야.",
+    "english": "Today is Monday.",
+    "blocks": ["Today", "is", "Monday"]
+  },
+  {
+    "id": 9,
+    "korean": "나는 산책을 좋아해.",
+    "english": "I like walking.",
+    "blocks": ["I", "like", "walking"]
+  },
+  {
+    "id": 10,
+    "korean": "건강이 중요해.",
+    "english": "Health is important.",
+    "blocks": ["Health", "is", "important"]
+  },
+  {
+    "id": 11,
+    "korean": "나는 커피를 마셔.",
+    "english": "I drink coffee.",
+    "blocks": ["I", "drink", "coffee"]
+  },
+  {
+    "id": 12,
+    "korean": "꽃이 아름다워.",
+    "english": "The flower is beautiful.",
+    "blocks": ["The", "flower", "is", "beautiful"]
+  },
+  {
+    "id": 13,
+    "korean": "나는 영어를 공부해.",
+    "english": "I study English.",
+    "blocks": ["I", "study", "English"]
+  },
+  {
+    "id": 14,
+    "korean": "가족이 소중해.",
+    "english": "Family is precious.",
+    "blocks": ["Family", "is", "precious"]
+  },
+  {
+    "id": 15,
+    "korean": "오늘 날씨가 좋아.",
+    "english": "The weather is nice today.",
+    "blocks": ["The", "weather", "is", "nice", "today"]
+  }
+]
