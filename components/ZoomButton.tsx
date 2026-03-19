@@ -14,7 +14,7 @@ export default function ZoomButton() {
 const styles = StyleSheet.create({
   button: {
     position: "absolute",
-    bottom: 32,
+    top: 100,
     right: 24,
     width: 56,
     height: 56,

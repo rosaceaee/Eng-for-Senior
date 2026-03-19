@@ -16,10 +16,12 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       {/* <Text style={styles.title}>영어 공부</Text> */}
+
       <Text style={[styles.title, { fontSize: 32 + fontSizeOffset }]}>
         {" "}
         영어공부1
       </Text>
+      <ZoomButton />
 
       <View style={styles.buttonWrapper}>
         <TouchableOpacity
@@ -47,8 +49,6 @@ export default function HomeScreen() {
           <Text style={styles.menuText}>문장 만들기</Text>
           <Text style={styles.menuSubText}>문장을 만들어보세요</Text>
         </TouchableOpacity>
-
-        <ZoomButton />
       </View>
     </View>
   );

@@ -1,10 +1,18 @@
+import Tooltip from "@/components/Tooltip";
+import { useFontSize } from "@/context/FontSizeContext";
 import alphabetData from "@/data/alphabetData.json";
+import { useTutorial } from "@/hooks/useTutorial";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import * as Speech from "expo-speech";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
+import ZoomButton from "@/components/ZoomButton";
+
 export default function AlphabetDetail() {
   const { letter } = useLocalSearchParams<{ letter: string }>();
+  const { step, visible, next, restart } = useTutorial("alphabetDetail");
+  const { fontSizeOffset } = useFontSize();
+
   const router = useRouter();
 
   const data = alphabetData.find((item) => item.letter === letter);
@@ -23,6 +31,7 @@ export default function AlphabetDetail() {
 
   return (
     <View style={styles.container}>
+      <ZoomButton />
       <Text style={styles.letter}>{letter}</Text>
 
       <View style={styles.wordList}>
@@ -30,11 +39,18 @@ export default function AlphabetDetail() {
           <View key={word.english} style={styles.wordCard}>
             <Text style={styles.emoji}>{word.emoji}</Text>
             <View style={styles.wordInfo}>
-              <Text style={styles.english}>{word.english}</Text>
-              <Text style={styles.korean}>{word.korean}</Text>
+              <Text style={[styles.english, { fontSize: 24 + fontSizeOffset }]}>
+                {word.english}
+              </Text>
+              <Text style={[styles.korean, { fontSize: 20 + fontSizeOffset }]}>
+                {word.korean}
+              </Text>
             </View>
             <TouchableOpacity
-              style={styles.speakButton}
+              style={[
+                styles.speakButton,
+                visible && step === 1 && styles.highlight,
+              ]}
               onPress={() => speak(word.english)}
             >
               <Text style={styles.speakIcon}>🔊</Text>
@@ -44,10 +60,33 @@ export default function AlphabetDetail() {
       </View>
 
       <TouchableOpacity
-        style={styles.quizButton}
+        style={[styles.quizButton, visible && step === 2 && styles.highlight]}
         onPress={() => router.push(`/alphabet/quiz/${letter}`)}
       >
         <Text style={styles.quizButtonText}>퀴즈 풀기 →</Text>
+      </TouchableOpacity>
+
+      {/*  */}
+
+      {/* 툴팁 */}
+      {visible && step === 1 && (
+        <Tooltip
+          message="🔊 버튼을 눌러 발음을 들어보세요"
+          direction="top"
+          onPress={next}
+        />
+      )}
+      {visible && step === 2 && (
+        <Tooltip
+          message="퀴즈 풀기 버튼을 눌러 퀴즈를 시작해보세요"
+          direction="top"
+          onPress={next}
+        />
+      )}
+
+      {/* 도움말 버튼 */}
+      <TouchableOpacity style={styles.helpButton} onPress={restart}>
+        <Text style={styles.helpText}>?</Text>
       </TouchableOpacity>
     </View>
   );
@@ -116,5 +155,27 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "bold",
     color: "#fff",
+  },
+  highlight: {
+    borderWidth: 5,
+    borderColor: "#FFD700",
+    borderStyle: "solid",
+  },
+  helpButton: {
+    position: "absolute",
+    bottom: 32,
+    right: 24,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: "#333",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 997,
+  },
+  helpText: {
+    color: "#FFFFFF",
+    fontSize: 22,
+    fontWeight: "bold",
   },
 });
