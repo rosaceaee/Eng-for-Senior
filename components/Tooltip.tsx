@@ -1,15 +1,23 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from "react-native";
 
 type Props = {
   message: string;
   onPress: () => void;
   direction?: "top" | "bottom";
+  bubbleStyle?: ViewStyle;
 };
 
 export default function Tooltip({
   message,
   onPress,
   direction = "bottom",
+  bubbleStyle,
 }: Props) {
   return (
     <TouchableOpacity
@@ -17,9 +25,9 @@ export default function Tooltip({
       onPress={onPress}
       activeOpacity={1}
     >
-      <View style={styles.bubble}>
-        <Text style={styles.message}>{message}</Text>
+      <View style={[styles.bubble, bubbleStyle]}>
         <Text style={styles.hint}>확인</Text>
+        <Text style={styles.message}>{message}</Text>
         {direction === "bottom" && <View style={styles.tailBottom} />}
         {direction === "top" && <View style={styles.tailTop} />}
       </View>
@@ -43,6 +51,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 14,
     maxWidth: 220,
+    minHeight: 100,
     zIndex: 999,
   },
   message: {
@@ -53,8 +62,9 @@ const styles = StyleSheet.create({
   },
   hint: {
     color: "#AAAAAA",
-    fontSize: 13,
-    marginTop: 6,
+    fontSize: 16,
+    marginTop: 0,
+    marginLeft: "auto",
   },
   tailBottom: {
     position: "absolute",

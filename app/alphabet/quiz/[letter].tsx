@@ -44,7 +44,6 @@ export default function QuizScreen() {
   const currentQuiz = quiz[current];
   const isCorrect = selected === currentQuiz.word.korean;
 
-  // asnyc ??
   const handleSelect = (choice: string) => {
     if (selected) return; // 이미 선택한 경우 무시
     setSelected(choice);
@@ -64,15 +63,6 @@ export default function QuizScreen() {
       setSelected(null);
     }
   };
-
-  // if (next.length === data.blocks.length) {
-  //   const correct = ...;
-  //   setIsCorrect(correct);
-  //   setFinished(true);
-
-  //   // ✅ 이 줄 추가
-  //   await saveAlphabetProgress(letter, correct ? score + 1 : score, quiz.length);
-  // }
 
   // 결과 화면
   if (finished) {
@@ -111,25 +101,39 @@ export default function QuizScreen() {
   return (
     <View style={styles.container}>
       {/* 진행 상황 */}
-      <Text style={styles.progress}>
-        {current + 1} / {quiz.length}
-      </Text>
+      <View style={styles.progressBar}>
+        {quiz.map((_, idx) => (
+          <View
+            key={idx}
+            style={[
+              styles.progressSegment,
+              { backgroundColor: idx <= current ? "#1565C0" : "#E1E0DA" },
+            ]}
+          />
+        ))}
+      </View>
 
       {/* 문제 */}
+
       <View style={styles.questionCard}>
-        <Text style={styles.emoji}>{currentQuiz.word.emoji}</Text>
+        <Text style={styles.questionText}>
+          아래에 있는 단어의 뜻을 맞혀보세요.
+        </Text>
+
+        {/* <Text style={styles.emoji}>{currentQuiz.word.emoji}</Text> */}
         <Text style={styles.english}>{currentQuiz.word.english}</Text>
-        <TouchableOpacity
-          onPress={() =>
-            Speech.speak(currentQuiz.word.english, {
-              language: "en-US",
-              rate: 0.8,
-            })
-          }
-        >
-          <Text style={styles.speakIcon}>🔊</Text>
-        </TouchableOpacity>
-        <Text style={styles.questionText}>무슨 뜻일까요?</Text>
+        <View style={styles.speakIcnWrap}>
+          <TouchableOpacity
+            onPress={() =>
+              Speech.speak(currentQuiz.word.english, {
+                language: "en-US",
+                rate: 0.8,
+              })
+            }
+          >
+            <Text style={styles.speakIcon}>🔊</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
       {/* 보기 */}
@@ -199,6 +203,9 @@ const styles = StyleSheet.create({
     fontSize: 36,
     fontWeight: "bold",
   },
+  speakIcnWrap: {
+    marginLeft: "auto",
+  },
   speakIcon: {
     fontSize: 28,
   },
@@ -214,7 +221,9 @@ const styles = StyleSheet.create({
   choiceCard: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderColor: "#1565C0",
     borderRadius: 14,
     padding: 18,
     gap: 16,
@@ -232,8 +241,14 @@ const styles = StyleSheet.create({
   choiceNumber: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "#888",
-    width: 24,
+    color: "#f5f5f5",
+    backgroundColor: "#1565C0",
+    width: 50,
+    borderWidth: 2,
+    borderColor: "#1565C0",
+    textAlign: "center",
+    padding: 10,
+    borderRadius: 50,
   },
   choiceText: {
     fontSize: 22,
@@ -278,5 +293,15 @@ const styles = StyleSheet.create({
   resultScore: {
     fontSize: 24,
     color: "#555",
+  },
+  progressBar: {
+    flexDirection: "row",
+    gap: 8,
+    marginBottom: 2,
+  },
+  progressSegment: {
+    borderRadius: 16,
+    width: 80,
+    height: 15,
   },
 });

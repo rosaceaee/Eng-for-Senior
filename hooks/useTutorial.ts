@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
 
-export const useTutorial = (key: string) => {
+export const useTutorial = (key: string, maxStep: number = 2) => {
   const [step, setStep] = useState<number | null>(null); // null = 로딩중
   const [visible, setVisible] = useState(false);
 
@@ -19,10 +19,21 @@ export const useTutorial = (key: string) => {
     check();
   }, [key]);
 
+  // const next = async () => {
+  //   if (step === 1) {
+  //     setStep(2);
+  //   } else if (step === 2) {
+  //     setStep(0);
+  //     setVisible(false);
+  //     await AsyncStorage.setItem(`tutorial_${key}`, "done");
+  //   }
+  // };
   const next = async () => {
-    if (step === 1) {
-      setStep(2);
-    } else if (step === 2) {
+    if (step === null) return; // null일때 암것도 안함
+
+    if (step < maxStep) {
+      setStep((s) => (s ?? 0) + 1);
+    } else {
       setStep(0);
       setVisible(false);
       await AsyncStorage.setItem(`tutorial_${key}`, "done");

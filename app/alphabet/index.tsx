@@ -61,10 +61,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 50,
-    backgroundColor: "#f0f0f0",
-    borderWidth: 1,
+    backgroundColor: "#F6ECEC",
+    borderWidth: 2,
     borderStyle: "solid",
-    borderColor: "red",
+    borderColor: "#F5A623",
   },
   letterText: {
     fontSize: 28,

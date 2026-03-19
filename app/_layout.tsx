@@ -1,3 +1,4 @@
+import "@/constants/globals";
 import { FontSizeProvider } from "@/context/FontSizeContext";
 
 import { Stack } from "expo-router";

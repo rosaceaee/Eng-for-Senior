@@ -10,7 +10,7 @@ import ZoomButton from "@/components/ZoomButton";
 
 export default function AlphabetDetail() {
   const { letter } = useLocalSearchParams<{ letter: string }>();
-  const { step, visible, next, restart } = useTutorial("alphabetDetail");
+  const { step, visible, next, restart } = useTutorial("alphabetDetail", 2);
   const { fontSizeOffset } = useFontSize();
 
   const router = useRouter();
@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
   letter: {
     fontSize: 80,
     fontWeight: "bold",
+    marginBottom: 30,
   },
   wordList: {
     width: "100%",
@@ -111,10 +112,10 @@ const styles = StyleSheet.create({
   wordCard: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#ffffff",
     borderRadius: 16,
     padding: 16,
-    gap: 16,
+    gap: 24,
   },
   emoji: {
     fontSize: 40,
@@ -126,6 +127,7 @@ const styles = StyleSheet.create({
   english: {
     fontSize: 24,
     fontWeight: "bold",
+    letterSpacing: 1,
   },
   korean: {
     fontSize: 20,
@@ -138,6 +140,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#fff",
     borderRadius: 28,
+    borderWidth: 1,
+    borderColor: "#D9D9D9",
   },
   speakIcon: {
     fontSize: 28,
@@ -168,14 +172,17 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 24,
-    backgroundColor: "#333",
+    backgroundColor: "#F5A623",
     alignItems: "center",
     justifyContent: "center",
     zIndex: 997,
   },
   helpText: {
-    color: "#FFFFFF",
+    color: "#333",
     fontSize: 22,
     fontWeight: "bold",
+  },
+  test: {
+    color: C.brand.primary,
   },
 });
