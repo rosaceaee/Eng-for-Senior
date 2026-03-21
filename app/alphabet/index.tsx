@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   letterText: {
     fontSize: 28,
     fontWeight: "bold",
-    color: C.text.fff,
+    color: "#fff",
   },
   doneText: {
     fontSize: 12,
