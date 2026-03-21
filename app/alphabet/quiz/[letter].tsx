@@ -36,22 +36,6 @@ export default function QuizScreen() {
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
 
-  // useEffect(() => {
-  //   if (finished) {
-  //     navigation.setOptions({
-  //       headerLeft: () => (
-  //         <TouchableOpacity onPress={() => router.replace("/")}>
-  //           <Text
-  //             style={{ fontSize: 16, color: "#1565C0", marginLeft: "auto" }}
-  //           >
-  //             ← 처음화면으로
-  //           </Text>
-  //         </TouchableOpacity>
-  //       ),
-  //     });
-  //   }
-  // }, [finished]);
-
   useEffect(() => {
     if (data) setQuiz(buildQuiz(data.words));
   }, [letter]);
@@ -120,19 +104,32 @@ export default function QuizScreen() {
             setFinished(false);
           }}
         >
-          <Text style={styles.buttonText}>다시 풀기</Text>
+          <Text style={styles.retryButtonText}>다시 풀기</Text>
         </TouchableOpacity>
+
         <View style={styles.buttonRow}>
           <TouchableOpacity
             style={styles.homeButton}
-            onPress={() => router.push("/alphabet")}
+            onPress={() => {
+              router.replace("/alphabet");
+            }}
           >
-            <Text style={styles.buttonText}>알파벳 목록으로</Text>
+            <Image
+              source={require("@/assets/images/listWh.png")}
+              style={styles.icn}
+            />
+            <Text style={styles.buttonText}>목록으로</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.homeButton}
-            onPress={() => router.push("/")}
+            onPress={() => {
+              router.replace("/");
+            }}
           >
+            <Image
+              source={require("@/assets/images/homeWh.png")}
+              style={styles.icn}
+            />
             <Text style={styles.buttonText}>처음 화면으로</Text>
           </TouchableOpacity>
         </View>
@@ -323,17 +320,22 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   homeButton: {
-    width: "45%",
-    height: 64,
+    width: "48%",
+    height: 70,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#888",
     borderRadius: 16,
   },
-  buttonText: {
+  retryButtonText: {
     fontSize: 20,
     fontWeight: "bold",
     color: "#fff",
+  },
+  buttonText: {
+    fontSize: 18,
+    color: "#fff",
+    paddingTop: 10,
   },
   resultEmoji: {
     // fontSize: 80,
@@ -367,5 +369,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     width: "100%",
+  },
+  icn: {
+    width: 20,
+    height: 20,
+    paddingTop: 5,
   },
 });

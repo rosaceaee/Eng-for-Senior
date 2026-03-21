@@ -122,14 +122,26 @@ export default function SentenceQuiz() {
               <View style={styles.buttonRow}>
                 <TouchableOpacity
                   style={styles.homeButton}
-                  onPress={() => router.push("/sentence")}
+                  onPress={() => {
+                    router.replace("/sentence");
+                  }}
                 >
+                  <Image
+                    source={require("@/assets/images/listWh.png")}
+                    style={styles.icn}
+                  />
                   <Text style={styles.buttonText}>문장 목록으로</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.homeButton}
-                  onPress={() => router.push("/")}
+                  onPress={() => {
+                    router.replace("/");
+                  }}
                 >
+                  <Image
+                    source={require("@/assets/images/homeWh.png")}
+                    style={styles.icn}
+                  />
                   <Text style={styles.buttonText}>처음 화면으로</Text>
                 </TouchableOpacity>
               </View>
@@ -175,7 +187,9 @@ export default function SentenceQuiz() {
               <View style={styles.buttonRow}>
                 <TouchableOpacity
                   style={styles.homeButton}
-                  onPress={() => router.push("/sentence")}
+                  onPress={() => {
+                    router.replace("/sentence");
+                  }}
                 >
                   <Image
                     source={require("@/assets/images/listWh.png")}
@@ -185,7 +199,9 @@ export default function SentenceQuiz() {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.homeButton}
-                  onPress={() => router.push("/")}
+                  onPress={() => {
+                    router.replace("/");
+                  }}
                 >
                   <Image
                     source={require("@/assets/images/homeWh.png")}

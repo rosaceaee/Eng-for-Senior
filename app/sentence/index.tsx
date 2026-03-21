@@ -32,7 +32,7 @@ export default function SentenceScreen() {
             <TouchableOpacity
               key={item.id}
               style={styles.sentenceCard}
-              onPress={() => router.push(`/sentence/quiz/${item.id}`)}
+              onPress={() => router.replace(`/sentence/quiz/${item.id}`)}
             >
               {/* 완료 체크 */}
               {isDone && (
