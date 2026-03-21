@@ -22,7 +22,7 @@ export default function AlphabetScreen() {
           <TouchableOpacity
             key={letter}
             style={styles.letterButton}
-            onPress={() => router.push(`/alphabet/${letter}`)}
+            onPress={() => router.replace(`/alphabet/${letter}`)}
           >
             <Text style={styles.letterText}>{letter}</Text>
             {progress[letter]?.done && (

@@ -78,7 +78,7 @@ export default function AlphabetDetail() {
       </View>
       <TouchableOpacity
         style={[styles.quizButton, visible && step === 2 && styles.highlight]}
-        onPress={() => router.push(`/alphabet/quiz/${letter}`)}
+        onPress={() => router.replace(`/alphabet/quiz/${letter}`)}
       >
         <Text style={styles.quizButtonText}>퀴즈 풀기 →</Text>
       </TouchableOpacity>
