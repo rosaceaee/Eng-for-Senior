@@ -11,6 +11,7 @@ type Props = {
   onPress: () => void;
   direction?: "top" | "bottom";
   bubbleStyle?: ViewStyle;
+  isLast?: boolean;
 };
 
 export default function Tooltip({
@@ -18,6 +19,7 @@ export default function Tooltip({
   onPress,
   direction = "bottom",
   bubbleStyle,
+  isLast = false,
 }: Props) {
   return (
     <TouchableOpacity
@@ -26,10 +28,10 @@ export default function Tooltip({
       activeOpacity={1}
     >
       <View style={[styles.bubble, bubbleStyle]}>
-        <Text style={styles.hint}>확인</Text>
         <Text style={styles.message}>{message}</Text>
         {direction === "bottom" && <View style={styles.tailBottom} />}
         {direction === "top" && <View style={styles.tailTop} />}
+        <Text style={styles.hint}>{isLast ? "완료" : "다음"} </Text>
       </View>
     </TouchableOpacity>
   );
@@ -59,11 +61,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "500",
     lineHeight: 22,
+    paddingTop: 10,
   },
   hint: {
     color: "#AAAAAA",
     fontSize: 16,
-    marginTop: 0,
+    marginTop: 20,
+    marginBottom: 0,
+    marginRight: 5,
     marginLeft: "auto",
   },
   tailBottom: {

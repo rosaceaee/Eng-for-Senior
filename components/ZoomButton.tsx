@@ -6,7 +6,10 @@ export default function ZoomButton() {
 
   return (
     <TouchableOpacity style={styles.button} onPress={increaseFontSize}>
-      <Image source={require("@/assets/images/icon.png")} style={styles.icon} />
+      <Image
+        source={require("@/assets/images/zoominbtn.png")}
+        style={styles.icon}
+      />
     </TouchableOpacity>
   );
 }
@@ -14,19 +17,19 @@ export default function ZoomButton() {
 const styles = StyleSheet.create({
   button: {
     position: "absolute",
-    top: 100,
-    right: 24,
-    width: 56,
-    height: 56,
+    top: 0,
+    right: 0,
+    width: 60,
+    height: 60,
     borderRadius: 28,
     // backgroundColor: Colors.brand.primary,
     alignItems: "center",
     justifyContent: "center",
-    zIndex: 999,
+    zIndex: 996,
   },
   icon: {
-    width: 28,
-    height: 28,
+    width: 45,
+    height: 45,
     resizeMode: "contain",
   },
 });
