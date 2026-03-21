@@ -17,10 +17,7 @@ export default function RootLayout() {
           name="alphabet/quiz/[letter]"
           options={{ title: "퀴즈" }}
         />
-        <Stack.Screen
-          name="sentence/index"
-          options={{ title: "문장 만들기" }}
-        />
+        <Stack.Screen name="sentence/index" options={{ title: "문장 연습" }} />
         <Stack.Screen
           name="sentence/quiz/[id]"
           options={{ title: "문장 퀴즈" }}

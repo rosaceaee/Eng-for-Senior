@@ -4,7 +4,7 @@ import alphabetData from "@/data/alphabetData.json";
 import { useTutorial } from "@/hooks/useTutorial";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import * as Speech from "expo-speech";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import ZoomButton from "@/components/ZoomButton";
 
@@ -31,9 +31,23 @@ export default function AlphabetDetail() {
 
   return (
     <View style={styles.container}>
-      <ZoomButton />
-      <Text style={styles.letter}>{letter}</Text>
+      {/* 도움말 버튼 */}
 
+      <TouchableOpacity style={styles.helpButton} onPress={restart}>
+        {/* <Text style={styles.helpText}>?</Text> */}
+        <Image
+          source={require("@/assets/images/question.png")}
+          style={styles.questionBtn}
+        />
+      </TouchableOpacity>
+      <View
+        style={[styles.zoomBtnWrap, visible && step === 3 && styles.highlight]}
+      >
+        <ZoomButton />
+        <Text style={styles.zoomTxt}>글자 확대</Text>
+      </View>
+
+      <Text style={styles.letter}>{letter}</Text>
       <View style={styles.wordList}>
         {data.words.map((word) => (
           <View key={word.english} style={styles.wordCard}>
@@ -53,41 +67,58 @@ export default function AlphabetDetail() {
               ]}
               onPress={() => speak(word.english)}
             >
-              <Text style={styles.speakIcon}>🔊</Text>
+              {/* <Text style={styles.speakIcon}>🔊</Text> */}
+              <Image
+                source={require("@/assets/images/speaker.png")}
+                style={styles.speakBtn}
+              />
             </TouchableOpacity>
           </View>
         ))}
       </View>
-
       <TouchableOpacity
         style={[styles.quizButton, visible && step === 2 && styles.highlight]}
         onPress={() => router.push(`/alphabet/quiz/${letter}`)}
       >
         <Text style={styles.quizButtonText}>퀴즈 풀기 →</Text>
       </TouchableOpacity>
-
-      {/*  */}
-
       {/* 툴팁 */}
       {visible && step === 1 && (
         <Tooltip
-          message="🔊 버튼을 눌러 발음을 들어보세요"
-          direction="top"
+          message="노란 테두리의 확성기 버튼을 눌러 발음을 들어보세요"
+          // direction="bottom"
+          bubbleStyle={{
+            left: "auto",
+            top: 100,
+            right: 30,
+          }}
           onPress={next}
         />
       )}
       {visible && step === 2 && (
         <Tooltip
-          message="퀴즈 풀기 버튼을 눌러 퀴즈를 시작해보세요"
-          direction="top"
+          message="단어 공부를 다 했다면 퀴즈 풀기 버튼을 눌러 문제를 풀어보세요"
+          bubbleStyle={{
+            right: undefined,
+            left: 70,
+            bottom: 150,
+          }}
+          isLast={true}
+          // isLast={step === maxStep}
           onPress={next}
         />
       )}
-
-      {/* 도움말 버튼 */}
-      <TouchableOpacity style={styles.helpButton} onPress={restart}>
-        <Text style={styles.helpText}>?</Text>
-      </TouchableOpacity>
+      {/* {visible && step === 3 && (
+        <Tooltip
+          message="누르면 글자를 크게 볼 수 있어요."
+          bubbleStyle={{
+            top: 0,
+            left: 40,
+            right: undefined,
+          }}
+          onPress={next}
+        />
+      )} */}
     </View>
   );
 }
@@ -100,10 +131,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     gap: 20,
   },
+  zoomBtnWrap: {
+    position: "absolute",
+    top: 4,
+    right: 20,
+    width: 60,
+    height: 75,
+    alignItems: "center",
+  },
+  zoomTxt: {
+    fontSize: 14,
+    alignItems: "center",
+    fontWeight: 600,
+    paddingTop: 10,
+    marginTop: "auto",
+  },
   letter: {
     fontSize: 80,
     fontWeight: "bold",
-    marginBottom: 30,
+    marginBottom: 20,
+    marginTop: 40,
   },
   wordList: {
     width: "100%",
@@ -116,6 +163,8 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 16,
     gap: 24,
+    borderWidth: 1,
+    borderColor: C.brand.primary,
   },
   emoji: {
     fontSize: 40,
@@ -146,6 +195,14 @@ const styles = StyleSheet.create({
   speakIcon: {
     fontSize: 28,
   },
+  speakBtn: {
+    width: 30,
+    height: 30,
+  },
+  questionBtn: {
+    width: 40,
+    height: 40,
+  },
   quizButton: {
     width: "100%",
     height: 64,
@@ -167,15 +224,18 @@ const styles = StyleSheet.create({
   },
   helpButton: {
     position: "absolute",
-    bottom: 32,
-    right: 24,
+    top: 10,
+    right: 90,
     width: 48,
     height: 48,
     borderRadius: 24,
-    backgroundColor: "#F5A623",
+    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
     zIndex: 997,
+    borderWidth: 2,
+    borderColor: "#FFD700",
+    borderStyle: "solid",
   },
   helpText: {
     color: "#333",
@@ -184,5 +244,10 @@ const styles = StyleSheet.create({
   },
   test: {
     color: C.brand.primary,
+  },
+  buttonRow: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "100%",
   },
 });

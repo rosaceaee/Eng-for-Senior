@@ -1,8 +1,8 @@
 import alphabetData from "@/data/alphabetData.json";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import * as Speech from "expo-speech";
 import { useEffect, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 type Word = { english: string; korean: string; emoji: string };
 type QuizItem = { word: Word; choices: string[] };
@@ -27,6 +27,7 @@ const buildQuiz = (words: Word[]): QuizItem[] => {
 export default function QuizScreen() {
   const { letter } = useLocalSearchParams<{ letter: string }>();
   const router = useRouter();
+  const navigation = useNavigation();
 
   const data = alphabetData.find((item) => item.letter === letter);
   const [quiz, setQuiz] = useState<QuizItem[]>([]);
@@ -34,6 +35,22 @@ export default function QuizScreen() {
   const [selected, setSelected] = useState<string | null>(null);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
+
+  // useEffect(() => {
+  //   if (finished) {
+  //     navigation.setOptions({
+  //       headerLeft: () => (
+  //         <TouchableOpacity onPress={() => router.replace("/")}>
+  //           <Text
+  //             style={{ fontSize: 16, color: "#1565C0", marginLeft: "auto" }}
+  //           >
+  //             ← 처음화면으로
+  //           </Text>
+  //         </TouchableOpacity>
+  //       ),
+  //     });
+  //   }
+  // }, [finished]);
 
   useEffect(() => {
     if (data) setQuiz(buildQuiz(data.words));
@@ -49,9 +66,9 @@ export default function QuizScreen() {
     setSelected(choice);
     if (choice === currentQuiz.word.korean) {
       setScore((s) => s + 1);
-      Speech.speak("Correct!", { language: "en-US" });
+      Speech.speak("정답!", { language: "ko" });
     } else {
-      Speech.speak("Try again!", { language: "en-US" });
+      Speech.speak("땡!", { language: "ko", rate: 1 });
     }
   };
 
@@ -68,12 +85,30 @@ export default function QuizScreen() {
   if (finished) {
     return (
       <View style={styles.container}>
-        <Text style={styles.resultEmoji}>
-          {score === quiz.length ? "🎉" : score >= 2 ? "👍" : "💪"}
-        </Text>
+        <View style={styles.resultEmoji}>
+          {score === quiz.length ? (
+            <>
+              <Image
+                source={require("@/assets/images/clap.png")}
+                style={styles.resultImg}
+              />
+            </>
+          ) : score >= 2 ? (
+            <Image
+              source={require("@/assets/images/smile_g.png")}
+              style={styles.resultImg}
+            />
+          ) : (
+            <Image
+              source={require("@/assets/images/smile_eyeclosed_org.png")}
+              style={styles.resultImg}
+            />
+          )}
+          {/* {score === quiz.length ? "🎉" : score >= 2 ? "👍" : "💪"} */}
+        </View>
         <Text style={styles.resultTitle}>퀴즈 완료!</Text>
         <Text style={styles.resultScore}>
-          {quiz.length}문제 중 {score}개 정답
+          {quiz.length}문제 중 {score}개를 맞췄어요!
         </Text>
         <TouchableOpacity
           style={styles.retryButton}
@@ -87,12 +122,20 @@ export default function QuizScreen() {
         >
           <Text style={styles.buttonText}>다시 풀기</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.homeButton}
-          onPress={() => router.push("/alphabet")}
-        >
-          <Text style={styles.buttonText}>알파벳 목록으로</Text>
-        </TouchableOpacity>
+        <View style={styles.buttonRow}>
+          <TouchableOpacity
+            style={styles.homeButton}
+            onPress={() => router.push("/alphabet")}
+          >
+            <Text style={styles.buttonText}>알파벳 목록으로</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.homeButton}
+            onPress={() => router.push("/")}
+          >
+            <Text style={styles.buttonText}>처음 화면으로</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -131,7 +174,11 @@ export default function QuizScreen() {
               })
             }
           >
-            <Text style={styles.speakIcon}>🔊</Text>
+            {/* <Text style={styles.speakIcon}>🔊</Text> */}
+            <Image
+              source={require("@/assets/images/speaker.png")}
+              style={styles.answerSpeaker}
+            />
           </TouchableOpacity>
         </View>
       </View>
@@ -182,6 +229,7 @@ const styles = StyleSheet.create({
     paddingVertical: 32,
     paddingHorizontal: 24,
     gap: 20,
+    marginTop: 10,
   },
   progress: {
     fontSize: 18,
@@ -208,6 +256,10 @@ const styles = StyleSheet.create({
   },
   speakIcon: {
     fontSize: 28,
+  },
+  answerSpeaker: {
+    width: 30,
+    height: 30,
   },
   questionText: {
     fontSize: 18,
@@ -271,7 +323,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   homeButton: {
-    width: "100%",
+    width: "45%",
     height: 64,
     alignItems: "center",
     justifyContent: "center",
@@ -284,7 +336,13 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   resultEmoji: {
-    fontSize: 80,
+    // fontSize: 80,
+    width: 80,
+    height: 80,
+  },
+  resultImg: {
+    width: 80,
+    height: 80,
   },
   resultTitle: {
     fontSize: 32,
@@ -293,6 +351,7 @@ const styles = StyleSheet.create({
   resultScore: {
     fontSize: 24,
     color: "#555",
+    marginBottom: 40,
   },
   progressBar: {
     flexDirection: "row",
@@ -303,5 +362,10 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     width: 80,
     height: 15,
+  },
+  buttonRow: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "100%",
   },
 });

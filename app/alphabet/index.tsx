@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 50,
-    backgroundColor: "#F6ECEC",
+    backgroundColor: C.brand.primary,
     borderWidth: 2,
     borderStyle: "solid",
     borderColor: "#F5A623",
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
   letterText: {
     fontSize: 28,
     fontWeight: "bold",
+    color: C.text.fff,
   },
   doneText: {
     fontSize: 12,

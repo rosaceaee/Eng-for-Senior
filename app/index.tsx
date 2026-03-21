@@ -1,6 +1,8 @@
-import { useFontSize } from "@/context/FontSizeContext";
 import { useRouter } from "expo-router";
+import { useEffect, useRef } from "react";
 import {
+  Animated,
+  Image,
   ImageBackground,
   Linking,
   StyleSheet,
@@ -9,68 +11,130 @@ import {
   View,
 } from "react-native";
 
+type TimeSlot = "morning" | "day" | "night";
+
+const getTimeSlot = (): TimeSlot => {
+  const hour = new Date().getHours();
+  if (hour >= 6 && hour <= 10) return "morning";
+  if (hour >= 11 && hour <= 18) return "day";
+  return "night";
+};
+
+const timeConfig = {
+  morning: {
+    innerWrapColor: "#687A5F",
+    image: require("@/assets/images/sunHalf.png"),
+    iconTranslateY: 10,
+  },
+  day: {
+    innerWrapColor: "#E7C9CD",
+    image: require("@/assets/images/sun.png"),
+    iconTranslateY: -60,
+  },
+  night: {
+    innerWrapColor: "#1A3A5C",
+    image: require("@/assets/images/moon.png"),
+    iconTranslateY: -60,
+  },
+};
+
 export default function HomeScreen() {
   const router = useRouter();
-  const { fontSizeOffset } = useFontSize();
-  const openKakao = () => {
-    Linking.openURL("https://open.kakao.com/o/sBRT26Zh");
+  // const { fontSizeOffset } = useFontSize();
+
+  const openTel = () => {
+    const tel =
+      // Constants.expoConfig?.extra?.contactTel ??
+      process.env.EXPO_PUBLIC_CONTACT_TEL;
+    Linking.openURL(`tel:${tel}`);
   };
+
+  const timeSlot = getTimeSlot();
+  const config = timeConfig[timeSlot];
+
+  const translateY = useRef(new Animated.Value(0)).current;
+  const opacity = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.parallel([
+      Animated.timing(translateY, {
+        toValue: config.iconTranslateY,
+        duration: 800,
+        useNativeDriver: true,
+      }),
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration: 600,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, []);
 
   return (
     <View style={styles.container}>
-      {/* <Text style={styles.title}>영어 공부</Text> */}
-      {/* <ZoomButton /> */}
+      <View
+        style={[styles.innerWrap, { backgroundColor: config.innerWrapColor }]}
+      >
+        <View style={styles.iconArea}>
+          <Animated.Image
+            source={config.image}
+            style={[
+              styles.iconImg,
+              {
+                opacity,
+                transform: [{ translateY }],
+              },
+            ]}
+          />
+        </View>
 
-      <View style={styles.mainTop}>
-        <Text style={[styles.title, { fontSize: 32 + fontSizeOffset }]}>
-          영어공부
-        </Text>
-        <Text style={styles.subTit}>
-          기초부터 간단한 문장까지 공부할 수 있어요.
-        </Text>
+        <View style={styles.titWrap}>
+          <Text style={styles.title}>영어공부</Text>
+          <Text style={styles.subTit}>
+            기초부터 간단한 문장까지 공부할 수 있어요.
+          </Text>
+          <View style={styles.buttonWrapper}>
+            <TouchableOpacity onPress={() => router.push("/alphabet")}>
+              <ImageBackground
+                source={require("@/assets/images/Letter.png")}
+                style={styles.menuButton}
+                imageStyle={styles.menuButtonImage}
+              >
+                <Text style={styles.menuText}>알파벳</Text>
+                <Text style={styles.menuSubText}>기초부터</Text>
+              </ImageBackground>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => router.push("/sentence")}>
+              <ImageBackground
+                source={require("@/assets/images/docu.png")}
+                style={styles.menuButton}
+                imageStyle={styles.menuButtonImage}
+              >
+                <Text
+                  style={styles.menuText}
+                  // style={[
+                  //   styles.menuText,
+                  //   { textAlign: "right", width: "100%", paddingRight: 20 },
+                  // ]}
+                >
+                  문장 연습
+                </Text>
+                <Text style={styles.menuSubText}>문장을 만들어보세요</Text>
+              </ImageBackground>
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity onPress={openTel}>
+            <View style={styles.btmWrap}>
+              <Image
+                source={require("@/assets/images/phone.png")}
+                style={styles.telIcn}
+              />
+              <Text style={{ textAlign: "center" }}>물어보기</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
-
-      <View style={styles.buttonWrapper}>
-        <TouchableOpacity
-          style={styles.menuButton}
-          onPress={() => router.push("/alphabet")}
-        >
-          {/* <Text style={styles.menuEmoji}>🔤</Text>
-        <Text style={styles.menuText}>알파벳</Text> */}
-
-          <ImageBackground
-            source={require("@/assets/images/bg_word.png")}
-            style={styles.menuButton}
-            imageStyle={styles.menuButtonImage}
-          >
-            <Text style={styles.menuText}>알파벳</Text>
-            <Text style={styles.menuSubText}>기초부터</Text>
-          </ImageBackground>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.menuButton}
-          onPress={() => router.push("/sentence")}
-        >
-          {/* <Text style={styles.menuEmoji}>📝</Text> */}
-          <ImageBackground
-            source={require("@/assets/images/bg_word.png")}
-            style={styles.menuButton}
-            imageStyle={styles.menuButtonImage}
-          >
-            <Text style={styles.menuText}>문장 만들기</Text>
-            <Text style={styles.menuSubText}>문장을 만들어보세요</Text>{" "}
-          </ImageBackground>
-        </TouchableOpacity>
-      </View>
-
-      <TouchableOpacity onPress={openKakao}>
-        {/* <Image
-            source={require('@/assets/images/kakao_icon.png')}
-            style={styles.kakaoIcon}
-          /> */}
-        <Text style={styles.btnToKatalk}>딸램한테 연락하기</Text>
-      </TouchableOpacity>
     </View>
   );
 }
@@ -102,33 +166,89 @@ const styles = StyleSheet.create({
       },
     ],
   },
+  titWrap: {
+    marginTop: 10,
+    marginBottom: 50,
+    borderWidth: 3,
+    borderColor: "#FFD700",
+    borderStyle: "solid",
+    borderTopRightRadius: 160,
+    borderTopLeftRadius: 160,
+    width: "100%",
+    height: "80%",
+    paddingVertical: 50,
+    backgroundColor: "#fff",
+  },
+  innerWrap: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#333",
+    height: "100%",
+    paddingVertical: 0,
+    borderWidth: 1,
+    borderColor: "#FFD700",
+    borderStyle: "solid",
+    paddingTop: 70,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  iconArea: {
+    height: 190,
+  },
+  iconImg: {
+    width: 100,
+    height: 100,
+    marginTop: 120,
+  },
   title: {
     fontSize: 32,
     fontWeight: "bold",
     marginBottom: 16,
-    color: "#fff",
+    color: "#333",
     textAlign: "center",
     letterSpacing: 1.6,
   },
   subTit: {
     fontSize: 16,
-    color: "#fff",
-    textAlign: "left",
+    color: "#333",
+    textAlign: "center",
   },
   buttonWrapper: {
     display: "flex",
     justifyContent: "center",
-    alignItems: "stretch",
+    alignItems: "center",
     flexDirection: "row",
     gap: 20,
+    marginTop: 60,
   },
-  menuButton: {
-    width: 150,
-    height: 150,
-    alignItems: "flex-start",
+  menuButtonAlpha: {
+    width: 130,
+    height: 130,
+    alignItems: "center",
     justifyContent: "center",
     borderRadius: 16,
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#fff",
+    overflow: "hidden",
+    borderWidth: 1,
+    borderColor: C.text.primary,
+    boxShadow: [
+      {
+        offsetX: 1,
+        offsetY: 3,
+        blurRadius: 2,
+        spreadDistance: 0,
+        color: C.text.primary,
+      },
+    ],
+  },
+  menuButton: {
+    width: 140,
+    height: 150,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 16,
+    backgroundColor: "#fff",
     overflow: "hidden",
     borderWidth: 1,
     borderStyle: "solid",
@@ -143,31 +263,51 @@ const styles = StyleSheet.create({
       },
     ],
   },
+  menuButtonRight: {
+    textAlign: "center",
+  },
   menuEmoji: {
     fontSize: 40,
   },
   menuText: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: "600",
-    marginTop: 30,
-    textAlign: "left",
-    paddingLeft: 16,
-    letterSpacing: 2,
+    marginTop: 60,
+    textAlign: "center",
+    letterSpacing: 0.6,
+    paddingTop: 10,
   },
   menuSubText: {
     fontSize: 16,
     marginTop: 4,
-    paddingLeft: 16,
   },
   menuButtonImage: {
     borderRadius: 16,
-    resizeMode: "cover",
-    width: 160,
-    height: 160,
+    top: 10,
+    left: "auto",
+    right: "auto",
+    width: 60,
+    height: 60,
   },
-  btnToKatalk: {
-    fontSize: 16,
-    textAlign: "center",
-    marginTop: 40,
+  menuButtonImageDocu: {
+    top: 10,
+    left: "auto",
+    right: "auto",
+    width: 60,
+    height: 60,
+  },
+  telIcn: {
+    width: 20,
+    height: 20,
+  },
+  btmWrap: {
+    width: "100%",
+    display: "flex",
+    alignItems: "flex-end",
+    justifyContent: "center",
+    flexDirection: "row",
+    gap: 10,
+    paddingVertical: 20,
+    marginTop: 60,
   },
 });
