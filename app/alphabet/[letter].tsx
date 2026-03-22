@@ -7,6 +7,7 @@ import * as Speech from "expo-speech";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import ZoomButton from "@/components/ZoomButton";
+import { scale } from "../utils/scale";
 
 export default function AlphabetDetail() {
   const { letter } = useLocalSearchParams<{ letter: string }>();
@@ -133,71 +134,73 @@ const styles = StyleSheet.create({
   },
   zoomBtnWrap: {
     position: "absolute",
-    top: 4,
+    top: 0,
     right: 20,
-    width: 60,
-    height: 75,
     alignItems: "center",
+    width: scale(40),
+    height: scale(30),
   },
   zoomTxt: {
-    fontSize: 14,
+    fontSize: scale(14),
     alignItems: "center",
     fontWeight: 600,
     paddingTop: 10,
-    marginTop: "auto",
+    marginBottom: 20,
+    width: scale(35),
+    height: scale(50),
   },
   letter: {
-    fontSize: 80,
+    fontSize: scale(45),
     fontWeight: "bold",
     marginBottom: 20,
     marginTop: 40,
   },
   wordList: {
     width: "100%",
-    gap: 16,
+    gap: scale(10),
   },
   wordCard: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#ffffff",
     borderRadius: 16,
-    padding: 16,
-    gap: 24,
+    padding: scale(14),
+    gap: scale(20),
     borderWidth: 1,
     borderColor: C.brand.primary,
   },
   emoji: {
-    fontSize: 40,
+    fontSize: scale(35),
   },
   wordInfo: {
     flex: 1,
     gap: 4,
   },
   english: {
-    fontSize: 24,
+    fontSize: scale(20),
     fontWeight: "bold",
     letterSpacing: 1,
   },
   korean: {
-    fontSize: 20,
+    fontSize: scale(18),
     color: "#555",
   },
   speakButton: {
-    width: 56,
-    height: 56,
+    width: scale(45),
+    height: scale(45),
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#fff",
     borderRadius: 28,
-    borderWidth: 1,
-    borderColor: "#D9D9D9",
+    borderWidth: 2,
+    borderColor: C.brand.primary,
   },
   speakIcon: {
     fontSize: 28,
   },
   speakBtn: {
-    width: 30,
-    height: 30,
+    width: scale(20),
+    height: scale(20),
   },
   questionBtn: {
     width: 40,
@@ -226,8 +229,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 10,
     right: 90,
-    width: 48,
-    height: 48,
+    width: scale(35),
+    height: scale(35),
     borderRadius: 24,
     backgroundColor: "#fff",
     alignItems: "center",
@@ -239,7 +242,7 @@ const styles = StyleSheet.create({
   },
   helpText: {
     color: "#333",
-    fontSize: 22,
+    fontSize: scale(16),
     fontWeight: "bold",
   },
   test: {

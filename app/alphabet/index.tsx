@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { scale } from "../utils/scale";
 
 const ALPHABETS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -51,13 +52,13 @@ const styles = StyleSheet.create({
   grid: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     gap: 30,
     padding: 20,
   },
   letterButton: {
-    width: 75,
-    height: 75,
+    width: scale(55),
+    height: scale(55),
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 50,
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
     borderColor: "#F5A623",
   },
   letterText: {
-    fontSize: 28,
+    fontSize: scale(18),
     fontWeight: "bold",
     color: "#fff",
   },

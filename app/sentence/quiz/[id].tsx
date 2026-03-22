@@ -14,6 +14,8 @@ import {
   View,
 } from "react-native";
 
+import { scale } from "@/app/utils/scale";
+
 import Tooltip from "@/components/Tooltip";
 import ZoomButton from "@/components/ZoomButton";
 
@@ -609,16 +611,18 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 4,
     right: 20,
-    width: 60,
-    height: 75,
     alignItems: "center",
+    width: scale(40),
+    height: scale(30),
   },
   zoomTxt: {
-    fontSize: 13,
+    fontSize: scale(14),
     alignItems: "center",
     fontWeight: 600,
     paddingTop: 10,
-    marginTop: "auto",
+    marginBottom: 20,
+    width: scale(35),
+    height: scale(50),
   },
   icn: {
     width: 20,

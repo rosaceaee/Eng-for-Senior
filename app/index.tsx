@@ -1,5 +1,6 @@
 import { useRouter } from "expo-router";
 import { useEffect, useRef } from "react";
+
 import {
   Animated,
   Image,
@@ -10,7 +11,9 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { scale } from "./utils/scale";
 
+// 타임 체크
 type TimeSlot = "morning" | "day" | "night";
 
 const getTimeSlot = (): TimeSlot => {
@@ -37,6 +40,7 @@ const timeConfig = {
     iconTranslateY: -60,
   },
 };
+//
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -243,8 +247,10 @@ const styles = StyleSheet.create({
     ],
   },
   menuButton: {
-    width: 140,
-    height: 150,
+    // width: 140,
+    // height: 150,
+    width: scale(130),
+    height: scale(150),
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 16,
@@ -270,15 +276,15 @@ const styles = StyleSheet.create({
     fontSize: 40,
   },
   menuText: {
-    fontSize: 20,
-    fontWeight: "600",
+    fontSize: scale(16),
+    fontWeight: "bold",
     marginTop: 60,
     textAlign: "center",
     letterSpacing: 0.6,
     paddingTop: 10,
   },
   menuSubText: {
-    fontSize: 16,
+    fontSize: scale(13),
     marginTop: 4,
   },
   menuButtonImage: {

@@ -1,9 +1,9 @@
+import { scale } from "@/app/utils/scale";
 import alphabetData from "@/data/alphabetData.json";
 import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import * as Speech from "expo-speech";
 import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
 type Word = { english: string; korean: string; emoji: string };
 type QuizItem = { word: Word; choices: string[] };
 
@@ -157,7 +157,7 @@ export default function QuizScreen() {
 
       <View style={styles.questionCard}>
         <Text style={styles.questionText}>
-          아래에 있는 단어의 뜻을 맞혀보세요.
+          아래에 있는 단어의 뜻을 세가지 중에서 하나 고르세요.
         </Text>
 
         {/* <Text style={styles.emoji}>{currentQuiz.word.emoji}</Text> */}
@@ -167,7 +167,7 @@ export default function QuizScreen() {
             onPress={() =>
               Speech.speak(currentQuiz.word.english, {
                 language: "en-US",
-                rate: 0.8,
+                rate: 0.5,
               })
             }
           >
@@ -210,7 +210,7 @@ export default function QuizScreen() {
       {/* 다음 버튼 — 선택 후에만 표시 */}
       {selected && (
         <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
-          <Text style={styles.buttonText}>
+          <Text style={styles.buttonTextNext}>
             {current + 1 >= quiz.length ? "결과 보기" : "다음 문제 →"}
           </Text>
         </TouchableOpacity>
@@ -225,11 +225,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingVertical: 32,
     paddingHorizontal: 24,
-    gap: 20,
+    gap: scale(10),
     marginTop: 10,
   },
   progress: {
-    fontSize: 18,
+    fontSize: scale(10),
     color: "#888",
     alignSelf: "flex-end",
   },
@@ -238,14 +238,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#f0f0f0",
     borderRadius: 20,
-    padding: 24,
+    padding: scale(14),
     gap: 8,
   },
   emoji: {
     fontSize: 56,
   },
   english: {
-    fontSize: 36,
+    fontSize: scale(34),
     fontWeight: "bold",
   },
   speakIcnWrap: {
@@ -333,9 +333,16 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: scale(18),
     color: "#fff",
+    fontWeight: "bold",
     paddingTop: 10,
+  },
+  buttonTextNext: {
+    fontSize: scale(18),
+    color: "#fff",
+    fontWeight: "bold",
+    paddingTop: 0,
   },
   resultEmoji: {
     // fontSize: 80,
@@ -358,12 +365,11 @@ const styles = StyleSheet.create({
   progressBar: {
     flexDirection: "row",
     gap: 8,
-    marginBottom: 2,
   },
   progressSegment: {
     borderRadius: 16,
-    width: 80,
-    height: 15,
+    width: scale(30),
+    height: scale(10),
   },
   buttonRow: {
     flexDirection: "row",
