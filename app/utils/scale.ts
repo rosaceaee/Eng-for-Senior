@@ -4,4 +4,8 @@ import { Dimensions } from "react-native";
 const BASE_WIDTH = 360;
 const { width } = Dimensions.get("window");
 
-export const scale = (size: number) => (width / BASE_WIDTH) * size;
+// export const scale = (size: number) => (width / BASE_WIDTH) * size;
+export const scale = (size: number, maxScale = 1.2) => {
+  const ratio = width / BASE_WIDTH;
+  return size * Math.min(ratio, maxScale);
+};
