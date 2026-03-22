@@ -1,50 +1,28 @@
-# Welcome to your Expo app 👋
+# 부모님 기초영어 공부의 연습용 앱
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## 작업 계기
 
-## Get started
+- 과거에 모바일용 웹 페이지로 간단하게 공부를 돕는 툴을 구현한 적이 있었으나 많이 부족한 페이지였습니다.<br/> 그러나 근래 들어 여유가 되는 시기를 맞이하여 기회라고 생각하여 다시 제작하고 싶었습니다.
+- 언어학습은 반복이 가장 중요하며 학원에서 배운 내용과 최대한 비슷한 난이도의 문장과 단어로 구성하였습니다.
 
-1. Install dependencies
+## 페이지 구성
 
-   ```bash
-   npm install
-   ```
+1. 알파벳
 
-2. Start the app
+   - 알파벳 단어에 해당하는 기초 단어를 3개만 추렸습니다.
+   - expo-speech를 사용하여 해당 단어를 읽게 하여 읽기와 듣기연습을 할 수 있도록 하였습니다.
+   - 기초 단어의 뜻을 복습할 수 있는 간단한 퀴즈를 구현하였습니다.
 
-   ```bash
-   npx expo start
-   ```
+2. 문장 연습
+   - 기초 문장 일부를 리스트화 하였습니다.
+   - 사용 연령층이 노년층이므로 최대한 눈에 띄도록 채도가 높은 색상으로 구성하였습니다.
+   - 문장 만들기를 완료한 후 정답/오답 케이스 화면에서 해당 문장을 다시 듣고 읽을 수 있는 영역을 ,만들었습니다.
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+<br/>
+이후 컨텐츠는 부모님과 상담 후 추후 천천히 작업 추가 예정입니다.
+  
+## 신경쓰고 있는 부분
+   - 사용 대상자를 최소 60대 후반~70대 초반으로 선정하였습니다. <br/>
+    앱을 사용한다는 것은 젊은 층, 중년 층에게는 익숙하지만 노년층에게는 벽이 높습니다. <br/>
+    그러므로 화려하고 예쁜 ui보다 최대한 화면 정보를 파악할 수 있도록 단순하게 레이아웃을 잡고 색상을 선택하고 있습니다. 
+    <br/>(그러나 계속 수정중이며 부모님 피드백을 상시 요청하여 개선 예정입니다)
