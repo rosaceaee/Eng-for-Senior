@@ -4,7 +4,14 @@ import alphabetData from "@/data/alphabetData.json";
 import { useTutorial } from "@/hooks/useTutorial";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import * as Speech from "expo-speech";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 import ZoomButton from "@/components/ZoomButton";
 import { scale } from "../utils/scale";
@@ -31,7 +38,7 @@ export default function AlphabetDetail() {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       {/* 도움말 버튼 */}
 
       <TouchableOpacity style={styles.helpButton} onPress={restart}>
@@ -120,7 +127,7 @@ export default function AlphabetDetail() {
           onPress={next}
         />
       )} */}
-    </View>
+    </ScrollView>
   );
 }
 
