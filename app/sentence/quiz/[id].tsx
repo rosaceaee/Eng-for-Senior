@@ -82,7 +82,7 @@ export default function SentenceQuiz() {
 
   if (finished) {
     return (
-      <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         {isCorrect ? (
           <>
             <View style={styles.resultContainer}>
@@ -103,7 +103,10 @@ export default function SentenceQuiz() {
                 {/* <Text style={styles.hintTxt}>문장 다시보기</Text> */}
                 <TouchableOpacity
                   onPress={() =>
-                    Speech.speak(data.english, { language: "en-US", rate: 0.6 })
+                    Speech.speak(data.english, {
+                      language: "en-US",
+                      rate: 0.6,
+                    })
                   }
                 >
                   <View style={styles.answerWrap}>
@@ -168,7 +171,10 @@ export default function SentenceQuiz() {
                 {/* <Text style={styles.hintTxt}>문장 다시보기</Text> */}
                 <TouchableOpacity
                   onPress={() =>
-                    Speech.speak(data.english, { language: "en-US", rate: 0.6 })
+                    Speech.speak(data.english, {
+                      language: "en-US",
+                      rate: 0.6,
+                    })
                   }
                 >
                   <View style={styles.answerWrap}>
@@ -215,110 +221,95 @@ export default function SentenceQuiz() {
             </View>
           </>
         )}
-      </View>
+      </ScrollView>
     );
   }
 
   // 퀴즈 화면
   return (
-    <View>
-      <ScrollView contentContainerStyle={styles.container}>
-        {/* 툴팁 */}
-        <TouchableOpacity style={styles.helpButton} onPress={restart}>
-          <Image
-            source={require("@/assets/images/question.png")}
-            style={styles.speakBtn}
-          />
-        </TouchableOpacity>
-        <View style={styles.zoomBtnWrap}>
-          <ZoomButton />
-          <Text style={styles.zoomTxt}>글자 확대</Text>
-        </View>
-        {/* // */}
-        <View style={styles.questionBox}>
-          <Text
-            style={[styles.questionLabel, { fontSize: 17 + fontSizeOffset }]}
+    <ScrollView contentContainerStyle={styles.container}>
+      {/* 툴팁 */}
+      <TouchableOpacity style={styles.helpButton} onPress={restart}>
+        <Image
+          source={require("@/assets/images/question.png")}
+          style={styles.speakBtn}
+        />
+      </TouchableOpacity>
+      <View style={styles.zoomBtnWrap}>
+        <ZoomButton />
+        <Text style={styles.zoomTxt}>글자 확대</Text>
+      </View>
+      {/* // */}
+      <View style={styles.questionBox}>
+        <Text style={[styles.questionLabel, { fontSize: 17 + fontSizeOffset }]}>
+          흰색 네모를 눌러서 문장을 완성해보세요.
+        </Text>
+        <Text style={[styles.questionLabel, { fontSize: 17 + fontSizeOffset }]}>
+          사용방법은 주황색 동그라미를 눌러보세요.
+        </Text>
+      </View>
+      <View style={styles.questionContent}>
+        <Text
+          style={[
+            styles.korean,
+            { fontSize: 26 + fontSizeOffset },
+            visible && step === 1 && styles.highlight,
+          ]}
+        >
+          {data.korean}
+        </Text>
+        {/* 선택한 블록 */}
+        <View style={styles.selectedArea}>
+          <Text style={styles.areaLabel}>내 문장</Text>
+          <View
+            style={[styles.blockRow, visible && step === 3 && styles.highlight]}
           >
-            흰색 네모를 눌러서 문장을 완성해보세요.
-          </Text>
-          <Text
-            style={[styles.questionLabel, { fontSize: 17 + fontSizeOffset }]}
-          >
-            사용방법은 주황색 동그라미를 눌러보세요.
-          </Text>
-        </View>
-        <View style={styles.questionContent}>
-          <Text
-            style={[
-              styles.korean,
-              { fontSize: 26 + fontSizeOffset },
-              visible && step === 1 && styles.highlight,
-            ]}
-          >
-            {data.korean}
-          </Text>
-          {/* 선택한 블록 */}
-          <View style={styles.selectedArea}>
-            <Text style={styles.areaLabel}>내 문장</Text>
-            <View
-              style={[
-                styles.blockRow,
-                visible && step === 3 && styles.highlight,
-              ]}
-            >
-              {selected.length === 0 ? (
-                <Text style={styles.placeholder}>
-                  네모를 눌러 문장을 만들어보세요
-                </Text>
-              ) : (
-                selected.map((block, idx) => (
-                  <TouchableOpacity
-                    key={idx}
-                    style={styles.selectedBlock}
-                    onPress={() => handleDeselect(block, idx)}
-                  >
-                    <Text
-                      style={[
-                        styles.blockTextSelected,
-                        { fontSize: 17 + fontSizeOffset },
-                      ]}
-                    >
-                      {block}
-                    </Text>
-                  </TouchableOpacity>
-                ))
-              )}
-            </View>
-          </View>
-          {/* 섞인 블록 (보기) */}
-          <View style={styles.choiceArea}>
-            <Text style={styles.areaLabel}>단어 박스</Text>
-            <View
-              style={[
-                styles.blockRow,
-                visible && step === 2 && styles.highlight,
-              ]}
-            >
-              {shuffledBlocks.map((block, idx) => (
+            {selected.length === 0 ? (
+              <Text style={styles.placeholder}>
+                네모를 눌러 문장을 만들어보세요
+              </Text>
+            ) : (
+              selected.map((block, idx) => (
                 <TouchableOpacity
                   key={idx}
-                  style={styles.choiceBlock}
-                  onPress={() => handleSelect(block, idx)}
+                  style={styles.selectedBlock}
+                  onPress={() => handleDeselect(block, idx)}
                 >
                   <Text
                     style={[
-                      styles.blockText,
+                      styles.blockTextSelected,
                       { fontSize: 17 + fontSizeOffset },
                     ]}
                   >
                     {block}
                   </Text>
                 </TouchableOpacity>
-              ))}
-            </View>
+              ))
+            )}
           </View>
         </View>
-      </ScrollView>
+        {/* 섞인 블록 (보기) */}
+        <View style={styles.choiceArea}>
+          <Text style={styles.areaLabel}>단어 박스</Text>
+          <View
+            style={[styles.blockRow, visible && step === 2 && styles.highlight]}
+          >
+            {shuffledBlocks.map((block, idx) => (
+              <TouchableOpacity
+                key={idx}
+                style={styles.choiceBlock}
+                onPress={() => handleSelect(block, idx)}
+              >
+                <Text
+                  style={[styles.blockText, { fontSize: 17 + fontSizeOffset }]}
+                >
+                  {block}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+      </View>
 
       {visible && step === 1 && (
         <Tooltip
@@ -356,7 +347,7 @@ export default function SentenceQuiz() {
           onPress={next}
         />
       )}
-    </View>
+    </ScrollView>
   );
 }
 
@@ -374,7 +365,7 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: "center",
     gap: 5,
-    marginTop: 60,
+    marginTop: scale(30),
   },
   questionLabel: {
     fontSize: 18,

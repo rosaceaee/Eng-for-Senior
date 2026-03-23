@@ -2,8 +2,16 @@ import { scale } from "@/app/utils/scale";
 import alphabetData from "@/data/alphabetData.json";
 import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import * as Speech from "expo-speech";
-import { useEffect, useState } from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useEffect, useRef, useState } from "react";
+
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 type Word = { english: string; korean: string; emoji: string };
 type QuizItem = { word: Word; choices: string[] };
 
@@ -27,6 +35,7 @@ const buildQuiz = (words: Word[]): QuizItem[] => {
 export default function QuizScreen() {
   const { letter } = useLocalSearchParams<{ letter: string }>();
   const router = useRouter();
+  const scrollRef = useRef<ScrollView>(null);
   const navigation = useNavigation();
 
   const data = alphabetData.find((item) => item.letter === letter);
@@ -54,6 +63,11 @@ export default function QuizScreen() {
     } else {
       Speech.speak("땡!", { language: "ko", rate: 1 });
     }
+
+    // 퀴즈에서 답안 선택 후 다음 문제 버튼으로 포커스
+    setTimeout(() => {
+      scrollRef.current?.scrollToEnd({ animated: true });
+    }, 100);
   };
 
   const handleNext = () => {
@@ -139,7 +153,7 @@ export default function QuizScreen() {
 
   // 퀴즈 화면
   return (
-    <View style={styles.container}>
+    <ScrollView ref={scrollRef} contentContainerStyle={styles.container}>
       {/* 진행 상황 */}
       <View style={styles.progressBar}>
         {quiz.map((_, idx) => (
@@ -215,18 +229,18 @@ export default function QuizScreen() {
           </Text>
         </TouchableOpacity>
       )}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
+    flexGrow: 1,
     alignItems: "center",
-    paddingVertical: 32,
+    paddingVertical: scale(20),
     paddingHorizontal: 24,
     gap: scale(10),
-    marginTop: 10,
   },
   progress: {
     fontSize: scale(10),
@@ -247,6 +261,7 @@ const styles = StyleSheet.create({
   english: {
     fontSize: scale(34),
     fontWeight: "bold",
+    marginTop: scale(10),
   },
   speakIcnWrap: {
     marginLeft: "auto",
