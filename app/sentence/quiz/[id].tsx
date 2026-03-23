@@ -230,12 +230,7 @@ export default function SentenceQuiz() {
             style={styles.speakBtn}
           />
         </TouchableOpacity>
-        <View
-          style={[
-            styles.zoomBtnWrap,
-            visible && step === 3 && styles.highlight,
-          ]}
-        >
+        <View style={styles.zoomBtnWrap}>
           <ZoomButton />
           <Text style={styles.zoomTxt}>글자 확대</Text>
         </View>
