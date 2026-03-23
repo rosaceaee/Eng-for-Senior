@@ -62,19 +62,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 50,
-    backgroundColor: C.brand.primary,
+    backgroundColor: C.default.loyalblue,
     borderWidth: 2,
     borderStyle: "solid",
-    borderColor: "#F5A623",
+    borderColor: C.default.gaenari,
   },
   letterText: {
     fontSize: scale(18),
     fontWeight: "bold",
-    color: "#fff",
+    color: C.text.fff,
   },
   doneText: {
     fontSize: 12,
-    color: "#4A90E2",
+    color: C.default.lb,
     fontWeight: "600",
   },
 });
