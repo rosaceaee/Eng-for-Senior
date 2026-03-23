@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react";
 
 import {
   Animated,
-  Image,
   ImageBackground,
   Linking,
   StyleSheet,
@@ -128,7 +127,7 @@ export default function HomeScreen() {
               </ImageBackground>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity onPress={openTel}>
+          {/* <TouchableOpacity onPress={openTel}>
             <View style={styles.btmWrap}>
               <Image
                 source={require("@/assets/images/phone.png")}
@@ -136,7 +135,7 @@ export default function HomeScreen() {
               />
               <Text style={{ textAlign: "center" }}>물어보기</Text>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </View>
     </View>
@@ -250,7 +249,7 @@ const styles = StyleSheet.create({
     // width: 140,
     // height: 150,
     width: scale(130),
-    height: scale(150),
+    height: scale(160),
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 16,
