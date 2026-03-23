@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
   sentenceCard: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: C.brand.primary,
-    borderColor: "#555555",
+    backgroundColor: C.default.loyalblue,
+    borderColor: C.mono.ooo,
     borderWidth: 2,
     borderStyle: "solid",
     borderRadius: 16,

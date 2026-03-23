@@ -244,13 +244,13 @@ const styles = StyleSheet.create({
   },
   progress: {
     fontSize: scale(10),
-    color: "#888",
+    color: C.mono.eight3,
     alignSelf: "flex-end",
   },
   questionCard: {
     width: "100%",
     alignItems: "center",
-    backgroundColor: "#f0f0f0",
+    backgroundColor: C.bg.card,
     borderRadius: 20,
     padding: scale(14),
     gap: 8,
@@ -275,7 +275,7 @@ const styles = StyleSheet.create({
   },
   questionText: {
     fontSize: 18,
-    color: "#555",
+    color: C.text.secondary,
     marginTop: 4,
   },
   choiceList: {
@@ -285,31 +285,31 @@ const styles = StyleSheet.create({
   choiceCard: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#fff",
+    backgroundColor: C.bg.fff,
     borderWidth: 1,
-    borderColor: "#1565C0",
+    borderColor: C.default.loyalblue,
     borderRadius: 14,
     padding: 18,
     gap: 16,
   },
   correct: {
-    backgroundColor: "#d4edda",
+    backgroundColor: C.bg.correct,
     borderWidth: 2,
     borderColor: "#28a745",
   },
   wrong: {
-    backgroundColor: "#f8d7da",
+    backgroundColor: C.bg.wrong,
     borderWidth: 2,
     borderColor: "#dc3545",
   },
   choiceNumber: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "#f5f5f5",
-    backgroundColor: "#1565C0",
+    color: C.bg.card,
+    backgroundColor: C.default.loyalblue,
     width: 50,
     borderWidth: 2,
-    borderColor: "#1565C0",
+    borderColor: C.default.loyalblue,
     textAlign: "center",
     padding: 10,
     borderRadius: 50,
@@ -331,7 +331,7 @@ const styles = StyleSheet.create({
     height: 64,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#4A90E2",
+    backgroundColor: C.default.lb,
     borderRadius: 16,
   },
   homeButton: {
@@ -339,13 +339,13 @@ const styles = StyleSheet.create({
     height: 70,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#888",
+    backgroundColor: C.mono.eight3,
     borderRadius: 16,
   },
   retryButtonText: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "#fff",
+    color: C.text.fff,
   },
   buttonText: {
     fontSize: scale(18),
@@ -355,7 +355,7 @@ const styles = StyleSheet.create({
   },
   buttonTextNext: {
     fontSize: scale(18),
-    color: "#fff",
+    color: C.text.fff,
     fontWeight: "bold",
     paddingTop: 0,
   },
@@ -374,7 +374,7 @@ const styles = StyleSheet.create({
   },
   resultScore: {
     fontSize: 24,
-    color: "#555",
+    color: C.mono.ooo,
     marginBottom: 40,
   },
   progressBar: {
