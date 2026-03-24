@@ -109,7 +109,7 @@ export default function AlphabetDetail() {
           bubbleStyle={{
             right: undefined,
             left: 70,
-            bottom: 150,
+            bottom: scale(80),
           }}
           isLast={true}
           // isLast={step === maxStep}
@@ -159,12 +159,13 @@ const styles = StyleSheet.create({
   letter: {
     fontSize: scale(45),
     fontWeight: "bold",
-    marginBottom: 20,
-    marginTop: 40,
+    marginBottom: 0,
+    marginTop: scale(40),
   },
   wordList: {
     width: "100%",
     gap: scale(10),
+    marginTop: scale(13),
   },
   wordCard: {
     flexDirection: "row",
@@ -210,8 +211,12 @@ const styles = StyleSheet.create({
     height: scale(20),
   },
   questionBtn: {
-    width: 40,
-    height: 40,
+    width: 45,
+    height: 45,
+    borderRadius: 28,
+    borderWidth: 2,
+    borderColor: C.default.yl,
+    borderStyle: "solid",
   },
   quizButton: {
     width: "100%",

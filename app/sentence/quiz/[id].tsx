@@ -316,8 +316,8 @@ export default function SentenceQuiz() {
           message="영어로 만들 한국어 문장입니다."
           bubbleStyle={{
             right: undefined,
-            left: 30,
-            top: 60,
+            left: scale(30),
+            top: scale(33),
           }}
           onPress={next}
         />
@@ -327,8 +327,8 @@ export default function SentenceQuiz() {
           message="흰색 네모를 순서대로 눌러서 문장을 완성해보세요."
           bubbleStyle={{
             right: undefined,
-            left: 60,
-            bottom: 200,
+            left: scale(60),
+            bottom: scale(200),
           }}
           direction="bottom"
           onPress={next}
@@ -338,9 +338,9 @@ export default function SentenceQuiz() {
         <Tooltip
           message="흰색 네모를 선택 후 여기에 들어간 단어 조각을 다시 누르면 되돌릴 수 있어요."
           bubbleStyle={{
-            left: 50,
+            left: scale(50),
             top: undefined,
-            bottom: 120,
+            bottom: scale(76),
           }}
           direction="top"
           isLast={true}
@@ -385,7 +385,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     marginTop: 5,
-    marginBottom: 30,
+    marginBottom: scale(25),
   },
   selectedArea: {
     width: "100%",
@@ -397,7 +397,7 @@ const styles = StyleSheet.create({
     borderStyle: "dashed",
     padding: 16,
     gap: 12,
-    marginBottom: 20,
+    marginBottom: scale(10),
   },
   choiceArea: {
     width: "100%",
@@ -457,7 +457,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 16,
     paddingVertical: 32,
-    gap: 20,
+    gap: scale(10),
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -481,12 +481,12 @@ const styles = StyleSheet.create({
     height: 80,
   },
   resultTitle: {
-    fontSize: 32,
+    fontSize: scale(24),
     fontWeight: "bold",
     textAlign: "left",
   },
   resultSubTit: {
-    fontSize: 28,
+    fontSize: scale(24),
     fontWeight: "bold",
     textAlign: "left",
   },
@@ -501,8 +501,9 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 10,
     alignItems: "center",
-    gap: 20,
-    marginTop: 0,
+    gap: scale(10),
+    marginTop: scale(10),
+    marginBottom: scale(16),
     flex: 1,
     justifyContent: "center",
   },
@@ -541,12 +542,13 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   homeButton: {
-    width: "48%",
-    height: 70,
+    width: "45%",
+    // height: scale(70),
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: C.mono.eight3,
     borderRadius: 16,
+    padding: scale(10),
   },
   retryButtonText: {
     fontSize: 20,
@@ -554,8 +556,9 @@ const styles = StyleSheet.create({
     color: C.text.fff,
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: scale(16),
     color: C.text.fff,
+    fontWeight: "bold",
     paddingTop: 10,
   },
   highlight: {
@@ -588,6 +591,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     width: "100%",
+    marginTop: scale(5),
   },
   speakBtn: {
     width: 40,

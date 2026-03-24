@@ -335,12 +335,13 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   homeButton: {
-    width: "48%",
-    height: 70,
+    width: "45%",
+    // height: scale(70),
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: C.mono.eight3,
     borderRadius: 16,
+    padding: scale(10),
   },
   retryButtonText: {
     fontSize: 20,
@@ -348,8 +349,8 @@ const styles = StyleSheet.create({
     color: C.text.fff,
   },
   buttonText: {
-    fontSize: scale(18),
-    color: "#fff",
+    fontSize: scale(16),
+    color: C.text.fff,
     fontWeight: "bold",
     paddingTop: 10,
   },
@@ -369,7 +370,7 @@ const styles = StyleSheet.create({
     height: 80,
   },
   resultTitle: {
-    fontSize: 32,
+    fontSize: scale(26),
     fontWeight: "bold",
   },
   resultScore: {
@@ -390,6 +391,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     width: "100%",
+    marginTop: scale(10),
   },
   icn: {
     width: 20,
