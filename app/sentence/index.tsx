@@ -1,7 +1,7 @@
 import sentenceData from "@/data/sentenceData.json";
 import { useSentenceProgress } from "@/hooks/useProgress";
 import { useFocusEffect, useRouter } from "expo-router";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import {
   Image,
   ScrollView,
@@ -10,22 +10,45 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { scale } from "../utils/scale";
 
 export default function SentenceScreen() {
   const router = useRouter();
   const { progress, reload } = useSentenceProgress();
+  const [selectedLevel, setSelectedLevel] = useState<"기초" | "실전">("기초");
+
   // 화면 돌아올 때마다 진도 새로고침
   useFocusEffect(
     useCallback(() => {
       reload();
     }, [])
   );
+  //
+
+  //
+  const filtered = sentenceData.filter((item) => item.level === selectedLevel);
+  //
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>공부할 문장을 선택하세요.</Text>
+      <View style={styles.tabRow}>
+        <TouchableOpacity
+          style={[styles.tab, selectedLevel === "기초" && styles.tabActive]}
+          onPress={() => setSelectedLevel("기초")}
+        >
+          <Text style={styles.tabTxt}>기초</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.tab, selectedLevel === "실전" && styles.tabActive]}
+          onPress={() => setSelectedLevel("실전")}
+        >
+          <Text style={styles.tabTxt}>실전</Text>
+        </TouchableOpacity>
+      </View>
+
       <View style={styles.list}>
-        {sentenceData.map((item) => {
+        {filtered.map((item) => {
           const isDone = progress[item.id]?.done;
 
           return (
@@ -67,7 +90,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 16,
+    marginBottom: 0,
     marginTop: 10,
   },
   list: {
@@ -125,5 +148,35 @@ const styles = StyleSheet.create({
     height: 30,
     resizeMode: "contain",
     zIndex: 1,
+  },
+  tabRow: {
+    backgroundColor: C.bg.fff,
+    borderColor: C.mono.ooo,
+    borderWidth: 2,
+    borderStyle: "solid",
+    borderRadius: 5,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-around",
+    flexDirection: "row",
+    gap: scale(30),
+    padding: scale(16),
+  },
+  tab: {
+    backgroundColor: C.mono.ooo,
+    fontSize: scale(26),
+    padding: scale(5),
+    borderRadius: scale(10),
+  },
+  tabTxt: {
+    fontSize: scale(20),
+    padding: scale(5),
+    color: C.text.fff,
+  },
+  tabActive: {
+    backgroundColor: C.default.loyalblue,
+    color: C.text.fff,
+    borderColor: C.default.gaenari,
+    borderWidth: 3,
   },
 });
