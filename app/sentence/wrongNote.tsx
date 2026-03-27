@@ -1,3 +1,4 @@
+import { scale } from "@/app/utills/scale";
 import sentenceData from "@/data/sentenceData.json";
 import { useSentenceProgress } from "@/hooks/useProgress";
 import { useRouter } from "expo-router";
@@ -13,7 +14,6 @@ export default function WrongNote() {
   const router = useRouter();
   const { progress } = useSentenceProgress();
 
-  // 오답 목록 — 풀었지만 정답 아닌 것
   const wrongList = sentenceData.filter(
     (item) => progress[item.id]?.done && !progress[item.id]?.cleared
   );
@@ -21,10 +21,11 @@ export default function WrongNote() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>오답 노트</Text>
+      <Text style={styles.subTitle}>틀린 문장을 다시 풀어보세요.</Text>
 
       {wrongList.length === 0 ? (
         <View style={styles.emptyBox}>
-          <Text style={styles.emptyEmoji}>🎉</Text>
+          <Text style={styles.emptyEmoji}>!!</Text>
           <Text style={styles.emptyText}>오답이 없어요!</Text>
         </View>
       ) : (
@@ -53,12 +54,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingVertical: 32,
     paddingHorizontal: 24,
-    gap: 16,
+    gap: 10,
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 8,
+  },
+  subTitle: {
+    fontSize: scale(16),
+    marginBottom: scale(10),
   },
   emptyBox: {
     alignItems: "center",

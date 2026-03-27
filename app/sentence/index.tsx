@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   title: {
-    fontSize: 24,
+    fontSize: scale(22),
     fontWeight: "bold",
     marginBottom: 0,
     marginTop: 10,
@@ -188,5 +188,6 @@ const styles = StyleSheet.create({
     color: C.text.fff,
     borderColor: C.default.gaenari,
     borderWidth: 3,
+    fontWeight: "bold",
   },
 });
