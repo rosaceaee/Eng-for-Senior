@@ -18,9 +18,19 @@ export default function RootLayout() {
           options={{ title: "퀴즈" }}
         />
         <Stack.Screen name="sentence/index" options={{ title: "문장 연습" }} />
+
         <Stack.Screen
           name="sentence/quiz/[id]"
           options={{ title: "문장 퀴즈" }}
+        />
+
+        <Stack.Screen
+          name="alphabet/listen/[letter]"
+          options={{ title: "듣기 퀴즈" }}
+        />
+        <Stack.Screen
+          name="sentence/wrongNote"
+          options={{ title: "오답 노트" }}
         />
       </Stack>
     </FontSizeProvider>
