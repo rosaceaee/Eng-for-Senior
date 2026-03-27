@@ -1,7 +1,8 @@
+import WrongNoteBtn from "@/components/ui/WrongNoteBtn";
 import sentenceData from "@/data/sentenceData.json";
 import { useSentenceProgress } from "@/hooks/useProgress";
-import { useFocusEffect, useRouter } from "expo-router";
-import { useCallback, useState } from "react";
+import { useFocusEffect, useNavigation, useRouter } from "expo-router";
+import { useCallback, useEffect, useState } from "react";
 import {
   Image,
   ScrollView,
@@ -14,6 +15,7 @@ import { scale } from "../utils/scale";
 
 export default function SentenceScreen() {
   const router = useRouter();
+  const navigation = useNavigation();
   const { progress, reload } = useSentenceProgress();
   const [selectedLevel, setSelectedLevel] = useState<"기초" | "실전">("기초");
 
@@ -24,6 +26,12 @@ export default function SentenceScreen() {
     }, [])
   );
   //
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => <WrongNoteBtn />,
+    });
+  }, []);
 
   //
   const filtered = sentenceData.filter((item) => item.level === selectedLevel);

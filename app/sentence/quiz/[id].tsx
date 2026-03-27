@@ -2,7 +2,7 @@ import { useFontSize } from "@/context/FontSizeContext";
 import sentenceData from "@/data/sentenceData.json";
 import { saveSentenceProgress } from "@/hooks/useProgress";
 import { useTutorial } from "@/hooks/useTutorial";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import * as Speech from "expo-speech";
 import { useEffect, useState } from "react";
 import {
@@ -17,13 +17,14 @@ import {
 import { scale } from "@/app/utils/scale";
 
 import Tooltip from "@/components/Tooltip";
-import ZoomButton from "@/components/ZoomButton";
+import GuideBtn from "@/components/ui/GuideBtn";
 
 const shuffle = <T,>(arr: T[]): T[] => [...arr].sort(() => Math.random() - 0.5);
 
 export default function SentenceQuiz() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
+  const navigation = useNavigation();
 
   const data = sentenceData.find((item) => item.id === Number(id));
   const { step, visible, next, restart } = useTutorial(
@@ -40,6 +41,12 @@ export default function SentenceQuiz() {
   const [isCorrect, setIsCorrect] = useState(false);
 
   const { fontSizeOffset } = useFontSize();
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => <GuideBtn onPress={restart} />,
+    });
+  }, [restart]);
 
   useEffect(() => {
     if (data) resetQuiz();
@@ -231,18 +238,6 @@ export default function SentenceQuiz() {
   // 퀴즈 화면
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* 툴팁 */}
-      <TouchableOpacity style={styles.helpButton} onPress={restart}>
-        <Image
-          source={require("@/assets/images/question.png")}
-          style={styles.speakBtn}
-        />
-      </TouchableOpacity>
-      <View style={styles.zoomBtnWrap}>
-        <ZoomButton />
-        <Text style={styles.zoomTxt}>글자 확대</Text>
-      </View>
-      {/* // */}
       <View style={styles.questionBox}>
         <Text style={[styles.questionLabel, { fontSize: 17 + fontSizeOffset }]}>
           흰색 네모를 눌러서 문장을 완성해보세요.

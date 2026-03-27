@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export const useTutorial = (key: string, maxStep: number = 2) => {
   const [step, setStep] = useState<number | null>(null); // null = 로딩중
@@ -40,10 +40,16 @@ export const useTutorial = (key: string, maxStep: number = 2) => {
     }
   };
 
-  const restart = () => {
+  // const restart = () => {
+  //   setStep(1);
+  //   setVisible(true);
+  // };
+
+  // ui 구조 변경으로 수정: 렌더링 될 때마다 새로운 참조를 가질 수 있으니 useCallback으로 상태 감쌌음
+  const restart = useCallback(() => {
     setStep(1);
     setVisible(true);
-  };
+  }, []);
 
   return { step, visible, next, restart };
 };
