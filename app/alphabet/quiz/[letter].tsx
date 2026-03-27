@@ -36,6 +36,7 @@ export default function QuizScreen() {
   const { letter } = useLocalSearchParams<{ letter: string }>();
   const router = useRouter();
   const scrollRef = useRef<ScrollView>(null);
+
   const navigation = useNavigation();
 
   const data = alphabetData.find((item) => item.letter === letter);
@@ -102,7 +103,6 @@ export default function QuizScreen() {
               style={styles.resultImg}
             />
           )}
-          {/* {score === quiz.length ? "🎉" : score >= 2 ? "👍" : "💪"} */}
         </View>
         <Text style={styles.resultTitle}>퀴즈 완료!</Text>
         <Text style={styles.resultScore}>
@@ -168,7 +168,6 @@ export default function QuizScreen() {
       </View>
 
       {/* 문제 */}
-
       <View style={styles.questionCard}>
         <Text style={styles.questionText}>
           아래에 있는 단어의 뜻을 세가지 중에서 하나 고르세요.
