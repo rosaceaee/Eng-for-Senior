@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { scale } from "./utils/scale";
+import { scale } from "./utills/scale";
 
 // 타임 체크
 type TimeSlot = "morning" | "day" | "night";

@@ -1,4 +1,4 @@
-import { scale } from "@/app/utils/scale";
+import { scale } from "@/app/utills/scale";
 import { useRouter } from "expo-router";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
