@@ -1,10 +1,8 @@
-import Tooltip from "@/components/Tooltip";
-import { useFontSize } from "@/context/FontSizeContext";
-import alphabetData from "@/data/alphabetData.json";
-import { useTutorial } from "@/hooks/useTutorial";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import * as Speech from "expo-speech";
+import { useState } from "react";
 import {
+  Dimensions,
   Image,
   ScrollView,
   StyleSheet,
@@ -13,13 +11,31 @@ import {
   View,
 } from "react-native";
 
+import Tooltip from "@/components/Tooltip";
+import { useFontSize } from "@/context/FontSizeContext";
+import alphabetData from "@/data/alphabetData.json";
+import { useTutorial } from "@/hooks/useTutorial";
+
 import ZoomButton from "@/components/ZoomButton";
 import { scale } from "../utils/scale";
+const { width, height } = Dimensions.get("window");
 
 export default function AlphabetDetail() {
   const { letter } = useLocalSearchParams<{ letter: string }>();
   const { step, visible, next, restart } = useTutorial("alphabetDetail", 2);
   const { fontSizeOffset } = useFontSize();
+  const [tooltipPosition, setTooltipPosition] = useState<
+    Record<number, { x: number; y: number }>
+  >({});
+
+  // const [targetY, setTargetY] = useState(0);
+  // const [tooltipPosition, setTooltipPosition] = useState(
+  //   [{
+  //     positionY: 0,
+  //     positionX: 0
+  //     }
+  //   ]
+  // );
 
   const router = useRouter();
 
@@ -73,6 +89,10 @@ export default function AlphabetDetail() {
                 styles.speakButton,
                 visible && step === 1 && styles.highlight,
               ]}
+              onLayout={(e) => {
+                const { x, y } = e.nativeEvent.layout;
+                setTooltipPosition((prev) => ({ ...prev, 1: { x, y } }));
+              }}
               onPress={() => speak(word.english)}
             >
               {/* <Text style={styles.speakIcon}>🔊</Text> */}
@@ -86,6 +106,11 @@ export default function AlphabetDetail() {
       </View>
       <TouchableOpacity
         style={[styles.quizButton, visible && step === 2 && styles.highlight]}
+        // onLayout={(e) => setTargetY(e.nativeEvent.layout.y)}
+        onLayout={(e) => {
+          const { x, y } = e.nativeEvent.layout;
+          setTooltipPosition((prev) => ({ ...prev, 2: { x, y } }));
+        }}
         onPress={() => router.replace(`/alphabet/quiz/${letter}`)}
       >
         <Text style={styles.quizButtonText}>퀴즈 풀기 →</Text>
@@ -95,21 +120,31 @@ export default function AlphabetDetail() {
         <Tooltip
           message="노란 테두리의 확성기 버튼을 눌러 발음을 들어보세요"
           // direction="bottom"
+          // bubbleStyle={{
+          //   left: "auto",
+          //   top: 100,
+          //   right: 30,
+          // }}
+          // bubbleStyle={{ top: targetY - 430 }}
           bubbleStyle={{
-            left: "auto",
-            top: 100,
-            right: 30,
+            top: (tooltipPosition[step]?.y ?? 0) + 40,
           }}
+          direction="bottom"
           onPress={next}
         />
       )}
       {visible && step === 2 && (
         <Tooltip
           message="단어 공부를 다 했다면 퀴즈 풀기 버튼을 눌러 문제를 풀어보세요"
+          // bubbleStyle={{
+          //   right: undefined,
+          //   left: 70,
+          //   bottom: scale(150),
+          // }}
+          // bubbleStyle={{ top: targetY - 150 }}
           bubbleStyle={{
-            right: undefined,
-            left: 70,
-            bottom: scale(80),
+            top: (tooltipPosition[step]?.y ?? 0) - 150,
+            left: (tooltipPosition[step]?.x ?? 0) + 0,
           }}
           isLast={true}
           // isLast={step === maxStep}

@@ -30,6 +30,9 @@ export default function SentenceQuiz() {
     "senteceQuizTutorial",
     3
   );
+  const [tooltipPosition, setTooltipPosition] = useState<
+    Record<number, { x: number; y: number }>
+  >({});
 
   const [shuffledBlocks, setShuffledBlocks] = useState<string[]>([]);
   const [selected, setSelected] = useState<string[]>([]);
@@ -173,7 +176,7 @@ export default function SentenceQuiz() {
                   onPress={() =>
                     Speech.speak(data.english, {
                       language: "en-US",
-                      rate: 0.6,
+                      rate: 0.4,
                     })
                   }
                 >
@@ -255,6 +258,10 @@ export default function SentenceQuiz() {
             { fontSize: 26 + fontSizeOffset },
             visible && step === 1 && styles.highlight,
           ]}
+          onLayout={(e) => {
+            const { x, y } = e.nativeEvent.layout;
+            setTooltipPosition((prev) => ({ ...prev, 1: { x, y } }));
+          }}
         >
           {data.korean}
         </Text>
@@ -314,10 +321,14 @@ export default function SentenceQuiz() {
       {visible && step === 1 && (
         <Tooltip
           message="영어로 만들 한국어 문장입니다."
+          // bubbleStyle={{
+          //   right: undefined,
+          //   left: 30,
+          //   top: 60,
+          // }}
           bubbleStyle={{
-            right: undefined,
-            left: scale(30),
-            top: scale(33),
+            top: (tooltipPosition[step]?.y ?? 0) + 20,
+            left: tooltipPosition[step]?.x ?? +30,
           }}
           onPress={next}
         />
@@ -325,24 +336,32 @@ export default function SentenceQuiz() {
       {visible && step === 2 && (
         <Tooltip
           message="흰색 네모를 순서대로 눌러서 문장을 완성해보세요."
+          // bubbleStyle={{
+          //   right: undefined,
+          //   left: 60,
+          //   bottom: 200,
+          // }}
           bubbleStyle={{
-            right: undefined,
-            left: scale(60),
-            bottom: scale(200),
+            bottom: (tooltipPosition[step]?.y ?? 0) + 40,
+            left: tooltipPosition[step]?.x ?? +60,
           }}
-          direction="bottom"
+          direction="top"
           onPress={next}
         />
       )}
       {visible && step === 3 && (
         <Tooltip
           message="흰색 네모를 선택 후 여기에 들어간 단어 조각을 다시 누르면 되돌릴 수 있어요."
+          // bubbleStyle={{
+          //   left: 50,
+          //   top: undefined,
+          //   bottom: 120,
+          // }}
           bubbleStyle={{
-            left: scale(50),
-            top: undefined,
-            bottom: scale(76),
+            top: (tooltipPosition[step]?.y ?? 0) + 120,
+            left: tooltipPosition[step]?.x ?? +50,
           }}
-          direction="top"
+          direction="bottom"
           isLast={true}
           onPress={next}
         />
