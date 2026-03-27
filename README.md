@@ -1,5 +1,11 @@
 # 부모님 기초영어 공부의 연습용 앱 ![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat&logo=react)  ![Expo](https://img.shields.io/badge/Expo-000020?style=flat&logo=expo)  ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript)
 
+<div style="display: flex; gap: 20px; justify-content: center; align-items: center;">
+   <img src="https://github.com/rosaceaee/Eng-for-Senior/blob/main/assets/images/thumb_main.jpeg" alt="thumbnail_main" style="width: 200px;"/>
+   <img src="https://github.com/rosaceaee/Eng-for-Senior/blob/main/assets/images/thumb1.jpeg" alt="thumbnail_sample1" style="width: 200px;" />
+   <img src="https://github.com/rosaceaee/Eng-for-Senior/blob/main/assets/images/thumb2.jpeg" alt="thumbnail_sample1" style="width: 200px" />
+</div>
+
 ## 작업 계기
 
 - 과거에 모바일용 웹 페이지로 간단하게 공부를 돕는 툴을 구현한 적이 있었으나 많이 부족한 페이지였습니다.<br/> 그러나 근래 들어 여유가 되는 시기를 맞이하여 기회라고 생각하여 다시 제작하고 싶었습니다.
