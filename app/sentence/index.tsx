@@ -11,13 +11,19 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { scale } from "../utils/scale";
+import { scale } from "../utills/scale";
 
 export default function SentenceScreen() {
   const router = useRouter();
   const navigation = useNavigation();
   const { progress, reload } = useSentenceProgress();
   const [selectedLevel, setSelectedLevel] = useState<"기초" | "실전">("기초");
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => <WrongNoteBtn />,
+    });
+  }, []);
 
   // 화면 돌아올 때마다 진도 새로고침
   useFocusEffect(
@@ -27,12 +33,6 @@ export default function SentenceScreen() {
   );
   //
 
-  useEffect(() => {
-    navigation.setOptions({
-      headerRight: () => <WrongNoteBtn />,
-    });
-  }, []);
-
   //
   const filtered = sentenceData.filter((item) => item.level === selectedLevel);
   //
@@ -40,6 +40,7 @@ export default function SentenceScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>공부할 문장을 선택하세요.</Text>
+      {/* 난이도 탭 */}
       <View style={styles.tabRow}>
         <TouchableOpacity
           style={[styles.tab, selectedLevel === "기초" && styles.tabActive]}
@@ -54,6 +55,7 @@ export default function SentenceScreen() {
           <Text style={styles.tabTxt}>실전</Text>
         </TouchableOpacity>
       </View>
+      {/* // */}
 
       <View style={styles.list}>
         {filtered.map((item) => {
@@ -91,8 +93,8 @@ export default function SentenceScreen() {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    paddingVertical: 32,
-    paddingHorizontal: 24,
+    paddingVertical: scale(24),
+    paddingHorizontal: scale(24),
     gap: 16,
   },
   title: {
@@ -158,22 +160,22 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   tabRow: {
-    backgroundColor: C.bg.fff,
-    borderColor: C.mono.ooo,
-    borderWidth: 2,
-    borderStyle: "solid",
-    borderRadius: 5,
+    // backgroundColor: C.bg.fff,
+    // borderColor: C.mono.ooo,
+    // borderWidth: 2,
+    // borderStyle: "solid",
+    // borderRadius: 5,
     display: "flex",
     alignItems: "center",
     justifyContent: "space-around",
     flexDirection: "row",
-    gap: scale(30),
-    padding: scale(16),
+    gap: scale(20),
+    padding: scale(10),
   },
   tab: {
     backgroundColor: C.mono.ooo,
     fontSize: scale(26),
-    padding: scale(5),
+    padding: scale(10),
     borderRadius: scale(10),
   },
   tabTxt: {

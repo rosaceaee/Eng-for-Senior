@@ -1,6 +1,6 @@
-import { scale } from "@/app/utils/scale";
+import { scale } from "@/app/utills/scale";
 import alphabetData from "@/data/alphabetData.json";
-import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import * as Speech from "expo-speech";
 import { useEffect, useRef, useState } from "react";
 
@@ -36,8 +36,6 @@ export default function QuizScreen() {
   const { letter } = useLocalSearchParams<{ letter: string }>();
   const router = useRouter();
   const scrollRef = useRef<ScrollView>(null);
-
-  const navigation = useNavigation();
 
   const data = alphabetData.find((item) => item.letter === letter);
   const [quiz, setQuiz] = useState<QuizItem[]>([]);

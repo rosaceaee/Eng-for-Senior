@@ -14,7 +14,7 @@ import {
   View,
 } from "react-native";
 
-import { scale } from "@/app/utils/scale";
+import { scale } from "@/app/utills/scale";
 
 import Tooltip from "@/components/Tooltip";
 import GuideBtn from "@/components/ui/GuideBtn";
@@ -322,8 +322,8 @@ export default function SentenceQuiz() {
           //   top: 60,
           // }}
           bubbleStyle={{
-            top: (tooltipPosition[step]?.y ?? 0) + 20,
-            left: tooltipPosition[step]?.x ?? +30,
+            top: (tooltipPosition[step]?.y ?? 0) - 20,
+            left: (tooltipPosition[step]?.x ?? 0) + 30,
           }}
           onPress={next}
         />
@@ -337,10 +337,10 @@ export default function SentenceQuiz() {
           //   bottom: 200,
           // }}
           bubbleStyle={{
-            bottom: (tooltipPosition[step]?.y ?? 0) + 40,
-            left: tooltipPosition[step]?.x ?? +60,
+            top: (tooltipPosition[step]?.y ?? 0) + 270,
+            left: (tooltipPosition[step]?.x ?? 0) + 60,
           }}
-          direction="top"
+          direction="bottom"
           onPress={next}
         />
       )}
@@ -354,7 +354,7 @@ export default function SentenceQuiz() {
           // }}
           bubbleStyle={{
             top: (tooltipPosition[step]?.y ?? 0) + 120,
-            left: tooltipPosition[step]?.x ?? +50,
+            left: (tooltipPosition[step]?.x ?? 0) + 50,
           }}
           direction="bottom"
           isLast={true}
@@ -368,8 +368,8 @@ export default function SentenceQuiz() {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    paddingVertical: 32,
-    paddingHorizontal: 16,
+    paddingVertical: scale(20),
+    paddingHorizontal: scale(16),
     gap: 20,
   },
   questionBox: {
@@ -379,7 +379,6 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: "center",
     gap: 5,
-    marginTop: scale(30),
   },
   questionLabel: {
     fontSize: 18,

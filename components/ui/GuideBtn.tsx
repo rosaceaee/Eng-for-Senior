@@ -1,6 +1,6 @@
-import { scale } from "@/app/utils/scale";
+import { scale } from "@/app/utills/scale";
 import { useRouter } from "expo-router";
-import { Image, StyleSheet, TouchableOpacity } from "react-native";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 
 import ZoomButton from "../ZoomButton";
 
@@ -12,30 +12,35 @@ export default function GuideBtn({ onPress }: Props) {
 
   return (
     <>
-      {" "}
-      <TouchableOpacity onPress={onPress}>
-        <Image
-          source={require("@/assets/images/question.png")}
-          style={styles.helpButton}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => router.push("/sentence/wrongNote")}
-      >
-        <ZoomButton />
-      </TouchableOpacity>
+      <View style={styles.navBtnWrap}>
+        <TouchableOpacity onPress={onPress}>
+          <Image
+            source={require("@/assets/images/question.png")}
+            style={styles.helpButton}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => router.push("/sentence/wrongNote")}
+        >
+          <ZoomButton />
+        </TouchableOpacity>
+      </View>
     </>
   );
 }
 
 const styles = StyleSheet.create({
+  navBtnWrap: {
+    right: scale(10),
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    zIndex: 998,
+    width: scale(120),
+  },
   button: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 8,
     backgroundColor: "#fff",
-    marginRight: scale(16),
   },
   text: {
     fontSize: 14,
@@ -43,18 +48,14 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   helpButton: {
-    position: "absolute",
-    top: 10,
-    right: 90,
     width: scale(35),
     height: scale(35),
     borderRadius: 24,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    zIndex: 997,
     borderWidth: 2,
-    borderColor: "#fff",
+    borderColor: "#333",
     borderStyle: "solid",
   },
   helpText: {

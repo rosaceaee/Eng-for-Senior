@@ -1,6 +1,6 @@
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import * as Speech from "expo-speech";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Dimensions,
   Image,
@@ -12,12 +12,13 @@ import {
 } from "react-native";
 
 import Tooltip from "@/components/Tooltip";
+import GuideBtn from "@/components/ui/GuideBtn";
+
 import { useFontSize } from "@/context/FontSizeContext";
 import alphabetData from "@/data/alphabetData.json";
 import { useTutorial } from "@/hooks/useTutorial";
 
-import ZoomButton from "@/components/ZoomButton";
-import { scale } from "../utils/scale";
+import { scale } from "../utills/scale";
 const { width, height } = Dimensions.get("window");
 
 export default function AlphabetDetail() {
@@ -38,8 +39,15 @@ export default function AlphabetDetail() {
   // );
 
   const router = useRouter();
+  const navigation = useNavigation();
 
   const data = alphabetData.find((item) => item.letter === letter);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => <GuideBtn onPress={restart} />,
+    });
+  }, [restart]);
 
   const speak = (word: string) => {
     Speech.speak(word, { language: "en-US", rate: 0.8 });
@@ -55,21 +63,11 @@ export default function AlphabetDetail() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* 도움말 버튼 */}
-
-      <TouchableOpacity style={styles.helpButton} onPress={restart}>
-        {/* <Text style={styles.helpText}>?</Text> */}
-        <Image
-          source={require("@/assets/images/question.png")}
-          style={styles.questionBtn}
-        />
-      </TouchableOpacity>
-      <View
+      {/* <View
         style={[styles.zoomBtnWrap, visible && step === 3 && styles.highlight]}
       >
         <ZoomButton />
-        <Text style={styles.zoomTxt}>글자 확대</Text>
-      </View>
+      </View> */}
 
       <Text style={styles.letter}>{letter}</Text>
       <View style={styles.wordList}>
@@ -194,8 +192,7 @@ const styles = StyleSheet.create({
   letter: {
     fontSize: scale(45),
     fontWeight: "bold",
-    marginBottom: 20,
-    marginTop: 40,
+    marginBottom: scale(20),
   },
   wordList: {
     width: "100%",
