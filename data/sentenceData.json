@@ -1,90 +1,105 @@
 [
   {
     "id": 1,
+    "level": "기초",
     "korean": "공부를 할 시간이야.",
     "english": "It is time to study.",
     "blocks": ["It", "is", "time", "to", "study"]
   },
   {
     "id": 2,
+    "level": "기초",
     "korean": "밥을 먹을 시간이야.",
     "english": "It is time to eat.",
     "blocks": ["It", "is", "time", "to", "eat"]
   },
   {
     "id": 3,
+    "level": "기초",
     "korean": "잘 시간이야.",
     "english": "It is time to sleep.",
     "blocks": ["It", "is", "time", "to", "sleep"]
   },
   {
     "id": 4,
+    "level": "기초",
     "korean": "나는 물을 마셔.",
     "english": "I drink water.",
     "blocks": ["I", "drink", "water"]
   },
   {
     "id": 5,
+    "level": "기초",
     "korean": "나는 책을 읽어.",
     "english": "I read a book.",
     "blocks": ["I", "read", "a", "book"]
   },
   {
     "id": 6,
+    "level": "기초",
     "korean": "나는 음악을 들어.",
     "english": "I listen to music.",
     "blocks": ["I", "listen", "to", "music"]
   },
   {
     "id": 7,
+    "level": "기초",
     "korean": "날씨가 맑아.",
     "english": "The weather is clear.",
     "blocks": ["The", "weather", "is", "clear"]
   },
   {
     "id": 8,
+    "level": "기초",
     "korean": "오늘은 월요일이야.",
     "english": "Today is Monday.",
     "blocks": ["Today", "is", "Monday"]
   },
   {
     "id": 9,
+    "level": "기초",
     "korean": "나는 산책을 좋아해.",
     "english": "I like walking.",
     "blocks": ["I", "like", "walking"]
   },
   {
     "id": 10,
+    "level": "기초",
     "korean": "건강이 중요해.",
     "english": "Health is important.",
     "blocks": ["Health", "is", "important"]
   },
   {
     "id": 11,
+    "level": "기초",
     "korean": "나는 커피를 마셔.",
     "english": "I drink coffee.",
     "blocks": ["I", "drink", "coffee"]
   },
   {
     "id": 12,
+    "level": "기초",
     "korean": "꽃이 아름다워.",
     "english": "The flower is beautiful.",
     "blocks": ["The", "flower", "is", "beautiful"]
   },
   {
     "id": 13,
+    "level": "기초",
     "korean": "나는 영어를 공부해.",
     "english": "I study English.",
     "blocks": ["I", "study", "English"]
   },
   {
     "id": 14,
+    "level": "기초",
     "korean": "가족이 소중해.",
     "english": "Family is precious.",
     "blocks": ["Family", "is", "precious"]
   },
   {
     "id": 15,
+    "level": "기초",
     "korean": "오늘 날씨가 좋아.",
     "english": "The weather is nice today.",
     "blocks": ["The", "weather", "is", "nice", "today"]
@@ -92,92 +107,115 @@
 
   {
     "id": 16,
+    "level": "기초",
     "korean": "좋은 아침이에요.",
     "english": "Good morning.",
     "blocks": ["Good", "morning"]
   },
   {
     "id": 17,
+    "level": "기초",
     "korean": "안녕히 주무셨어요?",
     "english": "Did you sleep well?",
     "blocks": ["Did", "you", "sleep", "well"]
   },
   {
     "id": 18,
+    "level": "기초",
     "korean": "오늘 기분이 좋아요.",
     "english": "I feel good today.",
     "blocks": ["I", "feel", "good", "today"]
   },
   {
     "id": 19,
+    "level": "기초",
     "korean": "천천히 말해주세요.",
     "english": "Please speak slowly.",
     "blocks": ["Please", "speak", "slowly"]
   },
   {
     "id": 20,
+    "level": "기초",
     "korean": "고맙습니다.",
     "english": "Thank you.",
     "blocks": ["Thank", "you"]
   },
   {
     "id": 21,
+    "level": "기초",
     "korean": "오늘 날씨가 추워요.",
     "english": "It is cold today.",
     "blocks": ["It", "is", "cold", "today"]
   },
   {
     "id": 22,
+    "level": "기초",
     "korean": "봄이 왔어요.",
     "english": "Spring has come.",
     "blocks": ["Spring", "has", "come"]
   },
   {
     "id": 23,
+    "level": "기초",
     "korean": "비가 오고 있어요.",
     "english": "It is raining.",
     "blocks": ["It", "is", "raining"]
   },
   {
     "id": 24,
+    "level": "기초",
     "korean": "바람이 많이 불어요.",
     "english": "It is very windy.",
     "blocks": ["It", "is", "very", "windy"]
   },
   {
     "id": 25,
+    "level": "실전",
     "korean": "밥이 맛있어요.",
     "english": "The food is delicious.",
     "blocks": ["The", "food", "is", "delicious"]
   },
   {
     "id": 26,
+    "level": "기초",
     "korean": "물을 많이 마셔요.",
     "english": "I drink a lot of water.",
     "blocks": ["I", "drink", "a", "lot", "of", "water"]
   },
   {
     "id": 27,
+    "level": "기초",
     "korean": "매일 운동을 해요.",
     "english": "I exercise every day.",
     "blocks": ["I", "exercise", "every", "day"]
   },
   {
     "id": 28,
+    "level": "기초",
     "korean": "우리 가족은 행복해요.",
     "english": "My family is happy.",
     "blocks": ["My", "family", "is", "happy"]
   },
   {
     "id": 29,
+    "level": "기초",
     "korean": "당신을 사랑해요.",
     "english": "I love you.",
     "blocks": ["I", "love", "you"]
   },
   {
     "id": 30,
+    "level": "기초",
     "korean": "오늘도 수고했어요.",
     "english": "You did well today.",
     "blocks": ["You", "did", "well", "today"]
+  },
+  {
+    "id": 31,
+    "level": "실전",
+    "category": "건강",
+    "korean": "매일 운동을 하는 것이 중요해요.",
+    "english": "It is important to exercise every day.",
+    "blocks": ["It", "is", "important", "to", "exercise", "every", "day"]
   }
 ]
