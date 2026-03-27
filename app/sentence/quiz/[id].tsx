@@ -498,6 +498,7 @@ const styles = StyleSheet.create({
   resultImg: {
     width: 80,
     height: 80,
+    marginBottom: scale(10),
   },
   resultTitle: {
     fontSize: scale(24),
@@ -505,7 +506,8 @@ const styles = StyleSheet.create({
     textAlign: "left",
   },
   resultSubTit: {
-    fontSize: scale(24),
+    fontSize: scale(20),
+    marginTop: scale(5),
     fontWeight: "bold",
     textAlign: "left",
   },
@@ -561,8 +563,8 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   homeButton: {
-    width: "45%",
-    // height: scale(70),
+    width: "48%",
+    height: scale(75),
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: C.mono.eight3,
