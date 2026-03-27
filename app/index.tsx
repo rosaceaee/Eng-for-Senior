@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
     // width: 140,
     // height: 150,
     width: scale(130),
-    height: scale(160),
+    height: scale(140),
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 16,
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
   menuText: {
     fontSize: scale(16),
     fontWeight: "bold",
-    marginTop: 60,
+    marginTop: scale(50),
     textAlign: "center",
     letterSpacing: 0.6,
     paddingTop: 10,
