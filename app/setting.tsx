@@ -37,7 +37,7 @@ export default function SettingsScreen() {
           <Text style={styles.subTitle}>
             글자 크기를 조절하면 앱 전체의 글자 크기가 커져요.
           </Text>
-          <Text>최대 4단계까지 키울 수 있어요.</Text>
+          <Text>최대 3단계까지 키울 수 있어요.</Text>
         </View>
 
         <Text

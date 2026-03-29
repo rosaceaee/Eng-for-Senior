@@ -1,6 +1,25 @@
 import "@/constants/globals";
-
 import { Stack } from "expo-router";
+import { Text, TextInput } from "react-native";
+
+// 디바이스 시스템 설정 글자 크기 무시함. (앱에서 세팅한 글자 크기로 고정)
+interface TextWithDefaultProps extends Text {
+  defaultProps?: { allowFontScaling?: boolean };
+}
+(Text as unknown as TextWithDefaultProps).defaultProps =
+  (Text as unknown as TextWithDefaultProps).defaultProps || {};
+(Text as unknown as TextWithDefaultProps).defaultProps!.allowFontScaling =
+  false;
+
+interface TextInputWithDefaultProps extends TextInput {
+  defaultProps?: { allowFontScaling?: boolean };
+}
+(TextInput as unknown as TextInputWithDefaultProps).defaultProps =
+  (TextInput as unknown as TextInputWithDefaultProps).defaultProps || {};
+(
+  TextInput as unknown as TextInputWithDefaultProps
+).defaultProps!.allowFontScaling = false;
+//
 
 export default function RootLayout() {
   return (
