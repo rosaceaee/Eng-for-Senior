@@ -1,9 +1,11 @@
 import { scale } from "@/app/utills/scale";
-import { useFontSize } from "@/context/FontSizeContext";
+// import { useFontSize } from "@/context/FontSizeContext";
+import { useSettingStore } from "@/store/settingStore";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
 
 export default function ZoomButton() {
-  const { increaseFontSize } = useFontSize();
+  // const { increaseFontSize } = useFontSize();
+  const { increaseFontSize } = useSettingStore();
 
   return (
     <TouchableOpacity style={styles.button} onPress={increaseFontSize}>

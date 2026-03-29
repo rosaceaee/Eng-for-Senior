@@ -1,4 +1,6 @@
-import { useFontSize } from "@/context/FontSizeContext";
+// import { useFontSize } from "@/context/FontSizeContext";
+import { useSettingStore } from "@/store/settingStore";
+
 import sentenceData from "@/data/sentenceData.json";
 import { saveSentenceProgress } from "@/hooks/useProgress";
 import { useTutorial } from "@/hooks/useTutorial";
@@ -40,7 +42,8 @@ export default function SentenceQuiz() {
   const [finished, setFinished] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
 
-  const { fontSizeOffset } = useFontSize();
+  // const { fontSizeOffset } = useFontSize();
+  const { fontSizeOffset } = useSettingStore();
 
   useEffect(() => {
     navigation.setOptions({

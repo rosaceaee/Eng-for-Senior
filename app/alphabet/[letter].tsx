@@ -14,9 +14,11 @@ import {
 import Tooltip from "@/components/Tooltip";
 import GuideBtn from "@/components/ui/GuideBtn";
 
-import { useFontSize } from "@/context/FontSizeContext";
+// import { useFontSize } from "@/context/FontSizeContext";
+
 import alphabetData from "@/data/alphabetData.json";
 import { useTutorial } from "@/hooks/useTutorial";
+import { useSettingStore } from "@/store/settingStore";
 
 import { scale } from "../utills/scale";
 const { width, height } = Dimensions.get("window");
@@ -24,7 +26,9 @@ const { width, height } = Dimensions.get("window");
 export default function AlphabetDetail() {
   const { letter } = useLocalSearchParams<{ letter: string }>();
   const { step, visible, next, restart } = useTutorial("alphabetDetail", 2);
-  const { fontSizeOffset } = useFontSize();
+  // const { fontSizeOffset } = useFontSize();
+  const { fontSizeOffset } = useSettingStore();
+
   const [tooltipPosition, setTooltipPosition] = useState<
     Record<number, { x: number; y: number }>
   >({});

@@ -75,6 +75,11 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.settingArea}>
+        <TouchableOpacity onPress={() => router.push("/setting")}>
+          <Text style={styles.settingTxt}>⚙️ 설정</Text>
+        </TouchableOpacity>
+      </View>
       <View
         style={[styles.innerWrap, { backgroundColor: config.innerWrapColor }]}
       >
@@ -148,6 +153,27 @@ const styles = StyleSheet.create({
     alignItems: "stretch",
     justifyContent: "flex-start",
     gap: 24,
+  },
+  settingArea: {
+    width: scale(70),
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    paddingHorizontal: scale(5),
+    paddingVertical: scale(10),
+    position: "absolute",
+    top: scale(45),
+    right: scale(20),
+    borderRadius: scale(10),
+    borderWidth: 1,
+    borderColor: C.default.yl,
+    zIndex: 999,
+  },
+  settingTxt: {
+    fontSize: scale(14),
+    fontWeight: "bold",
+    color: C.text.fff,
   },
   mainTop: {
     backgroundColor: C.default.loyalblue,
