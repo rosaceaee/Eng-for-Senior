@@ -168,12 +168,13 @@ const styles = StyleSheet.create({
     borderRadius: scale(10),
     borderWidth: 1,
     borderColor: C.default.yl,
+    backgroundColor: C.default.yl,
     zIndex: 999,
   },
   settingTxt: {
     fontSize: scale(14),
     fontWeight: "bold",
-    color: C.text.fff,
+    color: C.text.ooo,
   },
   mainTop: {
     backgroundColor: C.default.loyalblue,

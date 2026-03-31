@@ -20,39 +20,73 @@ export default function SettingsScreen() {
           paddingBottom: 8,
         }}
       >
-        <Text style={styles.title}>설정</Text>
+        {/* <Text style={styles.title}>설정</Text> */}
 
-        <Text style={styles.subTitle}>
+        <Text
+          style={[
+            styles.subTitle,
+            { marginTop: 10, marginBottom: 0, fontSize: scale(16) },
+          ]}
+        >
           글자 크기와 발음 속도를 조절할 수 있어요.
+        </Text>
+        <Text
+          style={{
+            marginTop: 10,
+            marginBottom: 4,
+            fontSize: scale(16),
+            fontWeight: "bold",
+          }}
+        >
+          원하는 글자 크기와 발음 속도를 선택하고 이전 화면으로 돌아가면 설정이
+          저장돼요.
         </Text>
       </View>
 
       {/* 글자 크기 */}
       <View style={styles.section}>
         <Text style={styles.label}>
-          1. 글자 크기 ( {fontSizeOffset / 2} 단계)
+          1. 글자 크기 ( {fontSizeOffset / 2} 단계, 최대 3단계까지)
         </Text>
 
-        <View style={styles.subTitWrap}>
-          <Text style={styles.subTitle}>
-            글자 크기를 조절하면 앱 전체의 글자 크기가 커져요.
+        <View style={styles.sampleTxtWrap}>
+          <Text
+            style={[
+              styles.sampleLetter,
+              {
+                fontSize: 16 + fontSizeOffset,
+                color: "#555",
+                marginVertical: scale(10),
+              },
+            ]}
+          >
+            글자 크기가 이렇게 보일거예요.
           </Text>
-          <Text>최대 3단계까지 키울 수 있어요.</Text>
         </View>
-
-        <Text
+        {/* <Text
           style={{
             fontSize: 16 + fontSizeOffset,
             color: "#555",
-            marginVertical: 20,
+            marginVertical: scale(10),
+            marginBottom: scale(20),
           }}
         >
           글자 크기가 이렇게 보일거예요.
-        </Text>
+        </Text> */}
         <View style={styles.row}>
-          <TouchableOpacity style={styles.btn} onPress={increaseFontSize}>
-            <View>
-              <Text style={styles.btnText}>크게</Text>
+          <TouchableOpacity
+            style={[styles.btn, { backgroundColor: "#1565C0" }]}
+            onPress={increaseFontSize}
+          >
+            <View style={{ backgroundColor: "#1565C0" }}>
+              <Text
+                style={
+                  (styles.btnText,
+                  { color: "#fff", fontWeight: "bold", fontSize: scale(16) })
+                }
+              >
+                + 글자 크게
+              </Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity style={styles.btn} onPress={resetFontSize}>
@@ -61,11 +95,20 @@ export default function SettingsScreen() {
             </View>
           </TouchableOpacity>
         </View>
+
+        <View style={styles.subTitWrap}>
+          <Text style={styles.subTitle}>
+            1. 글자 크기를 조절하면 화면 전체의 글자 크기가 변경됩니다.
+          </Text>
+          <Text style={styles.subTitle}>
+            2. 글자 크기는 최대 3단계까지 키울 수 있어요.
+          </Text>
+        </View>
       </View>
 
       {/* TTS 음성 속도 */}
       <View style={styles.section}>
-        <Text style={styles.label}>2. 발음 속도</Text>
+        <Text style={styles.label}>2. 영어 발음 속도</Text>
         <View style={styles.row}>
           <TouchableOpacity
             style={[styles.btn, ttsRate === 0.6 && styles.btnActive]}
@@ -118,13 +161,12 @@ const styles = StyleSheet.create({
     borderBottomColor: "#333",
   },
   subTitWrap: {
-    marginTop: scale(0),
     gap: 4,
   },
   subTitle: {
     fontSize: 14,
     color: "#555",
-    marginTop: scale(10),
+    marginTop: scale(4),
   },
   section: {
     gap: scale(5),
@@ -133,9 +175,21 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "600",
   },
+  sampleTxtWrap: {
+    backgroundColor: C.bg.fff,
+    textAlign: "center",
+    padding: scale(10),
+    marginTop: scale(10),
+  },
+  sampleLetter: {
+    textAlign: "center",
+  },
   row: {
     flexDirection: "row",
     gap: 12,
+    justifyContent: "center",
+    marginTop: scale(10),
+    marginBottom: scale(10),
   },
   btn: {
     paddingVertical: 12,
