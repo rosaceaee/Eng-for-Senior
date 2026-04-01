@@ -170,7 +170,7 @@
   },
   {
     "id": 25,
-    "level": "실전",
+    "level": "기초",
     "korean": "밥이 맛있어요.",
     "english": "The food is delicious.",
     "blocks": ["The", "food", "is", "delicious"]
@@ -212,10 +212,424 @@
   },
   {
     "id": 31,
-    "level": "실전",
+    "level": "어려움",
     "category": "건강",
     "korean": "매일 운동을 하는 것이 중요해요.",
     "english": "It is important to exercise every day.",
     "blocks": ["It", "is", "important", "to", "exercise", "every", "day"]
+  },
+  {
+    "id": 32,
+    "level": "기초",
+    "korean": "나는 매일 일찍 일어나요.",
+    "english": "I wake up early.",
+    "blocks": ["I", "wake", "up", "early"]
+  },
+  {
+    "id": 33,
+    "level": "기초",
+    "korean": "나는 매일 아침 이를 닦아요.",
+    "english": "I brush my teeth every morning.",
+    "blocks": ["I", "brush", "my", "teeth", "every", "morning"]
+  },
+  {
+    "id": 34,
+    "level": "기초",
+    "korean": "나는 매일 샤워해요.",
+    "english": "I take a shower every day.",
+    "blocks": ["I", "take", "a", "shower", "every", "day"]
+  },
+  {
+    "id": 35,
+    "level": "기초",
+    "korean": "나는 열 시에 자요.",
+    "english": "I go to bed at ten.",
+    "blocks": ["I", "go", "to", "bed", "at", "ten"]
+  },
+  {
+    "id": 36,
+    "level": "기초",
+    "korean": "걸어서 출근해요.",
+    "english": "I walk to work.",
+    "blocks": ["I", "walk", "to", "work"]
+  },
+  {
+    "id": 37,
+    "level": "기초",
+    "korean": "나는 밤에 책을 읽어요.",
+    "english": "I read book at night.",
+    "blocks": ["I", "read", "book", "at", "night"]
+  },
+  {
+    "id": 38,
+    "level": "기초",
+    "korean": "나는 주말에 방을 청소해요.",
+    "english": "I clean my room on weekends.",
+    "blocks": ["I", "clean", "my", "room", "on", "weekends"]
+  },
+  {
+    "id": 39,
+    "level": "어려움",
+    "korean": "나는 건강을 위해 매일 운동해요.",
+    "english": "I exercise every day to stay healthy.",
+    "blocks": ["I", "exercise", "every", "day", "to", "stay", "healthy"]
+  },
+  {
+    "id": 40,
+    "level": "어려움",
+    "korean": "아침에 보통 버스를 타고 출근해요.",
+    "english": "I usually take the bus to work in the morning.",
+    "blocks": [
+      "I",
+      "usually",
+      "take",
+      "the",
+      "bus",
+      "to",
+      "work",
+      "in",
+      "the",
+      "morning"
+    ]
+  },
+  {
+    "id": 41,
+    "level": "기초",
+    "korean": "나는 산책하는 걸 좋아해요.",
+    "english": "I like to take a walk",
+    "blocks": ["I", "like", "to", "take", "a", "walk"]
+  },
+  {
+    "id": 42,
+    "level": "기초",
+    "korean": "나는 가족과 TV를 봐요.",
+    "english": "I watch TV with my family",
+    "blocks": ["I", "watch", "TV", "with", "my", "family"]
+  },
+  {
+    "id": 43,
+    "level": "기초",
+    "korean": "나는 핸드폰을 확인해요.",
+    "english": "I check my phone when I wake up.",
+    "blocks": ["I", "check", "my", "phone"]
+  },
+  {
+    "id": 44,
+    "level": "기초",
+    "korean": "나는 침대를 정리해요.",
+    "english": "I make my bed before I leave the house.",
+    "blocks": ["I", "make", "my", "bed"]
+  },
+  {
+    "id": 45,
+    "level": "기초",
+    "korean": "이것은 싸요",
+    "english": "This is cheap",
+    "blocks": ["This", "is", "cheap"]
+  },
+  {
+    "id": 46,
+    "level": "기초",
+    "korean": "이것은 비싸요.",
+    "english": "This is expensive.",
+    "blocks": ["This", "is", "expensive"]
+  },
+  {
+    "id": 47,
+    "level": "기초",
+    "korean": "매일 아침 과일을 먹어요.",
+    "english": "I eat fruit every morning.",
+    "blocks": ["I", "eat", "fruit", "every", "morning"]
+  },
+  {
+    "id": 48,
+    "level": "기초",
+    "korean": "커피를 좋아해요.",
+    "english": "I like coffee.",
+    "blocks": ["I", "like", "coffee"]
+  },
+  {
+    "id": 49,
+    "level": "기초",
+    "korean": "꽃이 폈어요.",
+    "english": "The flowers are blooming.",
+    "blocks": ["The", "flowers", "are", "blooming"]
+  },
+  {
+    "id": 50,
+    "level": "기초",
+    "korean": "나는 음식을 안 먹어요.",
+    "english": "I don't eat food.",
+    "blocks": ["I", "don't", "eat", "food"]
+  },
+  {
+    "id": 51,
+    "level": "어려움",
+    "korean": "수분 보충을 위해 물을 많이 마셔요.",
+    "english": "I drink a lot of water to stay hydrated.",
+    "blocks": [
+      "I",
+      "drink",
+      "a",
+      "lot",
+      "of",
+      "water",
+      "to",
+      "stay",
+      "hydrated"
+    ]
+  },
+  {
+    "id": 52,
+    "level": "어려움",
+    "korean": "매 끼니에 채소를 먹으려고 해요.",
+    "english": "I try to eat vegetables with every meal.",
+    "blocks": ["I", "try", "to", "eat", "vegetables", "with", "every", "meal"]
+  },
+  {
+    "id": 53,
+    "level": "어려움",
+    "korean": "이 수프는 따뜻하고 맛있어요.",
+    "english": "This soup is warm and tasty.",
+    "blocks": ["This", "soup", "is", "warm", "and", "tasty"]
+  },
+  {
+    "id": 54,
+    "level": "어려움",
+    "korean": "나는 음식을 먹으면 기분이 좋아져요.",
+    "english": "I feel good when I eat food.",
+    "blocks": ["I", "feel", "good", "when", "I", "eat", "food"]
+  },
+  {
+    "id": 55,
+    "level": "어려움",
+    "korean": "일주일에 세 번 헬스장에 가요.",
+    "english": "I go to the gym three times a week.",
+    "blocks": ["I", "go", "to", "the", "gym", "three", "times", "a", "week"]
+  },
+  {
+    "id": 56,
+    "level": "어려움",
+    "korean": "건강을 위해 매일 밤 여덟 시간 자요.",
+    "english": "I sleep eight hours every night for good health.",
+    "blocks": [
+      "I",
+      "sleep",
+      "eight",
+      "hours",
+      "every",
+      "night",
+      "for",
+      "good",
+      "health"
+    ]
+  },
+  {
+    "id": 57,
+    "level": "기초",
+    "korean": "오늘 행복해요.",
+    "english": "I am happy today.",
+    "blocks": ["I", "am", "happy", "today"]
+  },
+  {
+    "id": 58,
+    "level": "기초",
+    "korean": "그녀는 내 가장 친한 친구예요.",
+    "english": "She is my best friend.",
+    "blocks": ["She", "is", "my", "best", "friend"]
+  },
+  {
+    "id": 59,
+    "level": "기초",
+    "korean": "강아지는 귀여워요",
+    "english": "The dog is cute",
+    "blocks": ["The", "dog", "is", "cute"]
+  },
+  {
+    "id": 60,
+    "level": "기초",
+    "korean": "그는 아주 친절해요.",
+    "english": "He is very kind.",
+    "blocks": ["He", "is", "very", "kind"]
+  },
+  {
+    "id": 61,
+    "level": "기초",
+    "korean": "나는 지금 피곤해요.",
+    "english": "I feel tired now.",
+    "blocks": ["I", "feel", "tired", "now"]
+  },
+  {
+    "id": 62,
+    "level": "기초",
+    "korean": "우리는 좋은 친구예요.",
+    "english": "We are good friend.",
+    "blocks": ["We", "are", "good", "friend"]
+  },
+  {
+    "id": 63,
+    "level": "어려움",
+    "korean": "새로운 사람을 만나면 설레요.",
+    "english": "I feel excited when I meet new people.",
+    "blocks": ["I", "feel", "excited", "when", "I", "meet", "new", "people"]
+  },
+  {
+    "id": 64,
+    "level": "어려움",
+    "korean": "내가 슬플 때 그녀는 항상 웃게 해줘요.",
+    "english": "She always makes me smile when I am sad.",
+    "blocks": [
+      "She",
+      "always",
+      "makes",
+      "me",
+      "smile",
+      "when",
+      "I",
+      "am",
+      "sad"
+    ]
+  },
+  {
+    "id": 65,
+    "level": "기초",
+    "korean": "나는 내일 여행가요.",
+    "english": "I am traveling tomorrow.",
+    "blocks": ["I", "am", "traveling", "tomorrow"]
+  },
+  {
+    "id": 66,
+    "level": "어려움",
+    "korean": "그는 친절하고 이야기하기 편해요.",
+    "english": "He is kind and easy to talk to.",
+    "blocks": ["He", "is", "kind", "and", "easy", "to", "talk", "to"]
+  },
+  {
+    "id": 67,
+    "level": "어려움",
+    "korean": "우리는 문제가 있을 때 서로 도와요.",
+    "english": "We help each other when we have problems.",
+    "blocks": ["We", "help", "each", "other", "when", "we", "have", "problems"]
+  },
+  {
+    "id": 68,
+    "level": "어려움",
+    "korean": "어려운 일을 끝내면 뿌듯해요.",
+    "english": "I feel proud when I finish a difficult task.",
+    "blocks": [
+      "I",
+      "feel",
+      "proud",
+      "when",
+      "I",
+      "finish",
+      "a",
+      "difficult",
+      "task"
+    ]
+  },
+  {
+    "id": 69,
+    "level": "기초",
+    "korean": "바다가 좋아요.",
+    "english": "I like the beach.",
+    "blocks": ["I", "like", "the", "beach"]
+  },
+  {
+    "id": 70,
+    "level": "기초",
+    "korean": "이 곳은 아름다워요.",
+    "english": "This place is beautiful.",
+    "blocks": ["This", "place", "is", "beautiful"]
+  },
+  {
+    "id": 71,
+    "level": "기초",
+    "korean": "일요일에 공원에 가요.",
+    "english": "I go to the park on Sundays.",
+    "blocks": ["I", "go", "to", "the", "park", "on", "Sundays"]
+  },
+  {
+    "id": 72,
+    "level": "기초",
+    "korean": "박물관이 커요.",
+    "english": "The museum is big.",
+    "blocks": ["The", "museum", "is", "big"]
+  },
+  {
+    "id": 73,
+    "level": "기초",
+    "korean": "여행하고 싶어요.",
+    "english": "I want to travel.",
+    "blocks": ["I", "want", "to", "travel"]
+  },
+  {
+    "id": 74,
+    "level": "기초",
+    "korean": "그녀는 역 근처에 살아요.",
+    "english": "She lives near the station.",
+    "blocks": ["She", "lives", "near", "the", "station"]
+  },
+  {
+    "id": 75,
+    "level": "기초",
+    "korean": "나는 프랑스에 가고 싶어요.",
+    "english": "I want to visit Paris .",
+    "blocks": ["I", "want", "to", "visit", "France"]
+  },
+  {
+    "id": 76,
+    "level": "기초",
+    "korean": "호텔 방이 깨끗해요.",
+    "english": "The hotel room is clean",
+    "blocks": ["The", "hotel", "room", "is", "clean"]
+  },
+  {
+    "id": 77,
+    "level": "어려움",
+    "korean": "여행할 때 항상 사진을 많이 찍어요.",
+    "english": "I always take many photos when I travel.",
+    "blocks": ["I", "always", "take", "many", "photos", "when", "I", "travel"]
+  },
+  {
+    "id": 78,
+    "level": "어려움",
+    "korean": "도시가 바쁘지만 그 활기가 좋아요.",
+    "english": "The city is busy, but I love the energy.",
+    "blocks": ["The", "city", "is", "busy", "but", "I", "love", "the", "energy"]
+  },
+  {
+    "id": 79,
+    "level": "어려움",
+    "korean": "우리는 지난 여름에 기차를 타고 산에 갔어요.",
+    "english": "We took a train to the mountains last summer.",
+    "blocks": [
+      "We",
+      "took",
+      "a",
+      "train",
+      "to",
+      "the",
+      "mountains",
+      "last",
+      "summer"
+    ]
+  },
+  {
+    "id": 80,
+    "level": "어려움",
+    "korean": "나는 바다 근처에 있으면 편안해져요.",
+    "english": "I feel relaxed when I am near the ocean.",
+    "blocks": [
+      "I",
+      "feel",
+      "relaxed",
+      "when",
+      "I",
+      "am",
+      "near",
+      "the",
+      "ocean"
+    ]
   }
 ]
