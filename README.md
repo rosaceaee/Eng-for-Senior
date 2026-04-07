@@ -6,6 +6,9 @@
    <img src="https://github.com/rosaceaee/Eng-for-Senior/blob/main/assets/images/thumb2.jpeg" alt="thumbnail_sample1" style="width: 200px" />
 </div>
 
+## 제작기
+[뒤늦은 효도를 앱으로 구현한 회고](https://velog.io/@rosaceaee/review-smallgift)
+
 ## 작업 계기
 
 - 과거에 모바일용 웹 페이지로 간단하게 공부를 돕는 툴을 구현한 적이 있었으나 많이 부족한 페이지였습니다.<br/> 그러나 근래 들어 여유가 되는 시기를 맞이하여 기회라고 생각하여 다시 제작하고 싶었습니다.
