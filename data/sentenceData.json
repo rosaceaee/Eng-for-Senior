@@ -631,5 +631,26 @@
       "the",
       "ocean"
     ]
+  },
+  {
+    "id": 81,
+    "level": "기초",
+    "korean": "눈이 내려요",
+    "english": "It is snowing",
+    "blocks": ["It", "is", "snowing"]
+  },
+  {
+    "id": 82,
+    "level": "기초",
+    "korean": "나는 문을 열어요",
+    "english": "I open the door",
+    "blocks": ["I", "open", "the", "door"]
+  },
+  {
+    "id": 83,
+    "level": "기초",
+    "korean": "나는 티셔츠를 사요",
+    "english": "I buy a t-shirt",
+    "blocks": ["I", "buy", "a", "t-shirt"]
   }
 ]
