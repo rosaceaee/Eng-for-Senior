@@ -1,5 +1,5 @@
 import { useAlphabetProgress } from "@/hooks/useProgress";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import {
   ScrollView,
   StyleSheet,
@@ -14,6 +14,7 @@ const ALPHABETS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 export default function AlphabetScreen() {
   const router = useRouter();
   const { progress } = useAlphabetProgress();
+  const { letter } = useLocalSearchParams<{ letter: string }>();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>

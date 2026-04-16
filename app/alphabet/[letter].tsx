@@ -72,7 +72,6 @@ export default function AlphabetDetail() {
       >
         <ZoomButton />
       </View> */}
-
       <Text style={styles.letter}>{letter}</Text>
       <View style={styles.wordList}>
         {data.words.map((word) => (
@@ -106,17 +105,37 @@ export default function AlphabetDetail() {
           </View>
         ))}
       </View>
-      <TouchableOpacity
-        style={[styles.quizButton, visible && step === 2 && styles.highlight]}
-        // onLayout={(e) => setTargetY(e.nativeEvent.layout.y)}
-        onLayout={(e) => {
-          const { x, y } = e.nativeEvent.layout;
-          setTooltipPosition((prev) => ({ ...prev, 2: { x, y } }));
-        }}
-        onPress={() => router.replace(`/alphabet/quiz/${letter}`)}
+      <View
+        style={[styles.quizBtnWrap, visible && step == 2 && styles.highlight]}
       >
-        <Text style={styles.quizButtonText}>퀴즈 풀기 →</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.quizButton, visible && step === 2 && styles.highlight]}
+          // onLayout={(e) => setTargetY(e.nativeEvent.layout.y)}
+          onLayout={(e) => {
+            const { x, y } = e.nativeEvent.layout;
+            setTooltipPosition((prev) => ({ ...prev, 2: { x, y } }));
+          }}
+          onPress={() => router.replace(`/alphabet/quiz/${letter}`)}
+        >
+          <View>
+            <Text style={styles.quizButtonText}>단어 퀴즈 풀기</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.quizButton, visible && step === 2 && styles.highlight]}
+          // onLayout={(e) => setTargetY(e.nativeEvent.layout.y)}
+          onLayout={(e) => {
+            const { x, y } = e.nativeEvent.layout;
+            setTooltipPosition((prev) => ({ ...prev, 2: { x, y } }));
+          }}
+          onPress={() => router.replace(`/alphabet/spellingQuiz/${letter}`)}
+        >
+          <View>
+            <Text style={styles.quizButtonText}>단어 완성하기</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
       {/* 툴팁 */}
       {visible && step === 1 && (
         <Tooltip
@@ -250,7 +269,7 @@ const styles = StyleSheet.create({
     height: 40,
   },
   quizButton: {
-    width: "100%",
+    width: "50%",
     height: 64,
     alignItems: "center",
     justifyContent: "center",
@@ -259,7 +278,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   quizButtonText: {
-    fontSize: 22,
+    fontSize: scale(18),
     fontWeight: "bold",
     color: C.text.fff,
   },
@@ -295,5 +314,19 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     width: "100%",
+  },
+  buttonText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#333",
+  },
+  quizBtnWrap: {
+    display: "flex",
+    flexDirection: "row",
+    paddingHorizontal: 20,
+    width: "100%",
+    gap: scale(20),
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
