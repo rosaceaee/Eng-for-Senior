@@ -1,3 +1,4 @@
+import sentenceData from "@/data/sentenceData.json";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useCallback, useEffect, useState } from "react";
 
@@ -79,7 +80,9 @@ export const useSentenceProgress = () => {
   );
 
   const load = useCallback(async () => {
-    const ids = Array.from({ length: 15 }, (_, i) => i + 1);
+    // const ids = Array.from({ length: 15 }, (_, i) => i + 1);
+    const ids = sentenceData.map((item) => item.id);
+
     const entries = await Promise.all(
       ids.map(async (id) => {
         const raw = await AsyncStorage.getItem(KEYS.sentence(id));

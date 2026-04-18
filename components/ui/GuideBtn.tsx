@@ -32,7 +32,7 @@ export default function GuideBtn({ onPress }: Props) {
 
 const styles = StyleSheet.create({
   navBtnWrap: {
-    right: scale(10),
+    right: scale(0),
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",

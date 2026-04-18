@@ -213,7 +213,6 @@
   {
     "id": 31,
     "level": "어려움",
-    "category": "건강",
     "korean": "매일 운동을 하는 것이 중요해요.",
     "english": "It is important to exercise every day.",
     "blocks": ["It", "is", "important", "to", "exercise", "every", "day"]

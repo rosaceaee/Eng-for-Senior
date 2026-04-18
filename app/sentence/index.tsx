@@ -17,7 +17,7 @@ export default function SentenceScreen() {
   const router = useRouter();
   const navigation = useNavigation();
   const { progress, reload } = useSentenceProgress();
-  const [selectedLevel, setSelectedLevel] = useState<"기초" | "실전">("기초");
+  const [selectedLevel, setSelectedLevel] = useState<"기초" | "어려움">("기초");
 
   useEffect(() => {
     navigation.setOptions({
@@ -49,10 +49,10 @@ export default function SentenceScreen() {
           <Text style={styles.tabTxt}>기초</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.tab, selectedLevel === "실전" && styles.tabActive]}
-          onPress={() => setSelectedLevel("실전")}
+          style={[styles.tab, selectedLevel === "어려움" && styles.tabActive]}
+          onPress={() => setSelectedLevel("어려움")}
         >
-          <Text style={styles.tabTxt}>실전</Text>
+          <Text style={styles.tabTxt}>어려움</Text>
         </TouchableOpacity>
       </View>
       {/* // */}

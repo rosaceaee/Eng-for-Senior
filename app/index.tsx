@@ -1,6 +1,5 @@
 import { useRouter } from "expo-router";
 import { useEffect, useRef } from "react";
-
 import {
   Animated,
   ImageBackground,
@@ -11,6 +10,9 @@ import {
   View,
 } from "react-native";
 import { scale } from "./utills/scale";
+
+import DailyWordModal from "@/components/DailyWordModal";
+import { useDailyQuiz } from "@/hooks/useDailyQuiz";
 
 // 타임 체크
 type TimeSlot = "morning" | "day" | "night";
@@ -72,6 +74,8 @@ export default function HomeScreen() {
       }),
     ]).start();
   }, []);
+
+  const { word, showModal, dismiss } = useDailyQuiz();
 
   return (
     <View style={styles.container}>
@@ -143,6 +147,8 @@ export default function HomeScreen() {
           </TouchableOpacity> */}
         </View>
       </View>
+
+      <DailyWordModal visible={showModal} word={word} onDismiss={dismiss} />
     </View>
   );
 }
@@ -168,7 +174,7 @@ const styles = StyleSheet.create({
     borderRadius: scale(10),
     borderWidth: 1,
     borderColor: C.default.yl,
-    backgroundColor: C.default.yl,
+    backgroundColor: C.mono.white,
     zIndex: 999,
   },
   settingTxt: {

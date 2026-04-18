@@ -24,7 +24,15 @@ interface TextInputWithDefaultProps extends TextInput {
 export default function RootLayout() {
   return (
     // <FontSizeProvider>
-    <Stack>
+    <Stack
+      screenOptions={{
+        headerTitle: ({ children }) => (
+          <Text style={{ fontSize: 18, fontWeight: "bold", marginLeft: -10 }}>
+            {children}
+          </Text>
+        ),
+      }}
+    >
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="alphabet/index" options={{ title: "알파벳" }} />
       <Stack.Screen name="alphabet/[letter]" options={{ title: "단어 보기" }} />
