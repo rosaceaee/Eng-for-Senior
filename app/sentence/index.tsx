@@ -1,6 +1,7 @@
 import WrongNoteBtn from "@/components/ui/WrongNoteBtn";
-import sentenceData from "@/data/sentenceData.json";
+// import sentenceData from "@/data/sentenceData.json";
 import { useSentenceProgress } from "@/hooks/useProgress";
+import { useSentenceData } from "@/hooks/useSentenceData";
 import { useFocusEffect, useNavigation, useRouter } from "expo-router";
 import { useCallback, useEffect, useState } from "react";
 import {
@@ -18,6 +19,7 @@ export default function SentenceScreen() {
   const navigation = useNavigation();
   const { progress, reload } = useSentenceProgress();
   const [selectedLevel, setSelectedLevel] = useState<"기초" | "어려움">("기초");
+  const { data: sentenceData, loading } = useSentenceData();
 
   useEffect(() => {
     navigation.setOptions({

@@ -1,6 +1,6 @@
 import { scale } from "@/app/utills/scale";
-import sentenceData from "@/data/sentenceData.json";
 import { useSentenceProgress } from "@/hooks/useProgress";
+import { useSentenceData } from "@/hooks/useSentenceData";
 import { useRouter } from "expo-router";
 import {
   ScrollView,
@@ -13,6 +13,7 @@ import {
 export default function WrongNote() {
   const router = useRouter();
   const { progress } = useSentenceProgress();
+  const { data: sentenceData, loading } = useSentenceData();
 
   const wrongList = sentenceData.filter(
     (item) => progress[item.id]?.done && !progress[item.id]?.cleared

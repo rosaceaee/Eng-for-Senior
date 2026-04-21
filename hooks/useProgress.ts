@@ -1,4 +1,4 @@
-import sentenceData from "@/data/sentenceData.json";
+import { useSentenceData } from "@/hooks/useSentenceData";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useCallback, useEffect, useState } from "react";
 
@@ -78,6 +78,7 @@ export const useSentenceProgress = () => {
   const [progress, setProgress] = useState<Record<number, SentenceProgress>>(
     {}
   );
+  const { data: sentenceData, loading } = useSentenceData();
 
   const load = useCallback(async () => {
     // const ids = Array.from({ length: 15 }, (_, i) => i + 1);

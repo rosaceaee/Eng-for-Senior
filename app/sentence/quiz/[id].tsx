@@ -1,13 +1,13 @@
 // import { useFontSize } from "@/context/FontSizeContext";
-import { useSettingStore } from "@/store/settingStore";
-
-import sentenceData from "@/data/sentenceData.json";
 import { saveSentenceProgress } from "@/hooks/useProgress";
+import { useSentenceData } from "@/hooks/useSentenceData";
 import { useTutorial } from "@/hooks/useTutorial";
+import { useSettingStore } from "@/store/settingStore";
 import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import * as Speech from "expo-speech";
 import { useEffect, useState } from "react";
 import {
+  ActivityIndicator,
   Image,
   ScrollView,
   StyleSheet,
@@ -27,6 +27,8 @@ export default function SentenceQuiz() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const navigation = useNavigation();
+
+  const { data: sentenceData, loading } = useSentenceData();
 
   const data = sentenceData.find((item) => item.id === Number(id));
   const { step, visible, next, restart } = useTutorial(
@@ -53,11 +55,12 @@ export default function SentenceQuiz() {
 
   useEffect(() => {
     if (data) resetQuiz();
-  }, [id]);
+  }, [id, data]);
 
-  if (!data) return null;
+  // if (!data) return null;
 
   const resetQuiz = () => {
+    if (!data) return;
     setShuffledBlocks(shuffle([...data.blocks]));
     setSelected([]);
     setFinished(false);
@@ -93,6 +96,18 @@ export default function SentenceQuiz() {
     setShuffledBlocks((prev) => [...prev, block]);
   };
 
+  // 로딩
+  if (loading)
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" color={C.default.loyalblue} />
+      </View>
+    );
+
+  // 데이터 체크
+  if (!data) return null;
+
+  // 결과화면
   if (finished) {
     return (
       <ScrollView contentContainerStyle={styles.container}>
@@ -167,7 +182,6 @@ export default function SentenceQuiz() {
           </>
         ) : (
           <>
-            {/* <Text style={styles.resultEmoji}>💪</Text> */}
             <View style={styles.resultContainer}>
               <View style={styles.resultWrap}>
                 <Image
@@ -308,7 +322,8 @@ export default function SentenceQuiz() {
                 <Text
                   style={[styles.blockText, { fontSize: 17 + fontSizeOffset }]}
                 >
-                  {block}
+                  {block.replace(/^\{/, "").replace(/\}$/, "").trim()}
+                  {/* {block} */}
                 </Text>
               </TouchableOpacity>
             ))}
