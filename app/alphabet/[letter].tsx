@@ -16,7 +16,8 @@ import GuideBtn from "@/components/ui/GuideBtn";
 
 // import { useFontSize } from "@/context/FontSizeContext";
 
-import alphabetData from "@/data/alphabetData.json";
+// import alphabetData from "@/data/alphabetData.json";
+import { useAlphabetData } from "@/hooks/useAlphabetData";
 import { useTutorial } from "@/hooks/useTutorial";
 import { useSettingStore } from "@/store/settingStore";
 
@@ -28,6 +29,7 @@ export default function AlphabetDetail() {
   const { step, visible, next, restart } = useTutorial("alphabetDetail", 2);
   // const { fontSizeOffset } = useFontSize();
   const { fontSizeOffset } = useSettingStore();
+  const { data: alphabetData, loading } = useAlphabetData();
 
   const [tooltipPosition, setTooltipPosition] = useState<
     Record<number, { x: number; y: number }>
@@ -66,51 +68,52 @@ export default function AlphabetDetail() {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {/* <View
-        style={[styles.zoomBtnWrap, visible && step === 3 && styles.highlight]}
-      >
-        <ZoomButton />
-      </View> */}
-      <Text style={styles.letter}>{letter}</Text>
-      <View style={styles.wordList}>
-        {data.words.map((word) => (
-          <View key={word.english} style={styles.wordCard}>
-            <Text style={styles.emoji}>{word.emoji}</Text>
-            <View style={styles.wordInfo}>
-              <Text style={[styles.english, { fontSize: 24 + fontSizeOffset }]}>
-                {word.english}
-              </Text>
-              <Text style={[styles.korean, { fontSize: 20 + fontSizeOffset }]}>
-                {word.korean}
-              </Text>
+    <View style={styles.wrapper}>
+      <ScrollView contentContainerStyle={styles.container}>
+        <Text style={styles.letter}>{letter}</Text>
+        <View style={styles.wordList}>
+          {data.words.map((word) => (
+            <View key={word.english} style={styles.wordCard}>
+              <Text style={styles.emoji}>{word.emoji}</Text>
+              <View style={styles.wordInfo}>
+                <Text
+                  style={[styles.english, { fontSize: 24 + fontSizeOffset }]}
+                >
+                  {word.english}
+                </Text>
+                <Text
+                  style={[styles.korean, { fontSize: 20 + fontSizeOffset }]}
+                >
+                  {word.korean}
+                </Text>
+              </View>
+              <TouchableOpacity
+                style={[
+                  styles.speakButton,
+                  visible && step === 1 && styles.highlight,
+                ]}
+                onLayout={(e) => {
+                  const { x, y } = e.nativeEvent.layout;
+                  setTooltipPosition((prev) => ({ ...prev, 1: { x, y } }));
+                }}
+                onPress={() => speak(word.english)}
+              >
+                {/* <Text style={styles.speakIcon}>🔊</Text> */}
+                <Image
+                  source={require("@/assets/images/speaker.png")}
+                  style={styles.speakBtn}
+                />
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity
-              style={[
-                styles.speakButton,
-                visible && step === 1 && styles.highlight,
-              ]}
-              onLayout={(e) => {
-                const { x, y } = e.nativeEvent.layout;
-                setTooltipPosition((prev) => ({ ...prev, 1: { x, y } }));
-              }}
-              onPress={() => speak(word.english)}
-            >
-              {/* <Text style={styles.speakIcon}>🔊</Text> */}
-              <Image
-                source={require("@/assets/images/speaker.png")}
-                style={styles.speakBtn}
-              />
-            </TouchableOpacity>
-          </View>
-        ))}
-      </View>
+          ))}
+        </View>
+      </ScrollView>
+      {/* 하단 버튼 */}
       <View
         style={[styles.quizBtnWrap, visible && step == 2 && styles.highlight]}
       >
         <TouchableOpacity
-          style={[styles.quizButton, visible && step === 2 && styles.highlight]}
-          // onLayout={(e) => setTargetY(e.nativeEvent.layout.y)}
+          style={styles.quizButton}
           onLayout={(e) => {
             const { x, y } = e.nativeEvent.layout;
             setTooltipPosition((prev) => ({ ...prev, 2: { x, y } }));
@@ -122,8 +125,7 @@ export default function AlphabetDetail() {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.quizButton, visible && step === 2 && styles.highlight]}
-          // onLayout={(e) => setTargetY(e.nativeEvent.layout.y)}
+          style={styles.quizButton}
           onLayout={(e) => {
             const { x, y } = e.nativeEvent.layout;
             setTooltipPosition((prev) => ({ ...prev, 2: { x, y } }));
@@ -164,7 +166,7 @@ export default function AlphabetDetail() {
           // }}
           // bubbleStyle={{ top: targetY - 150 }}
           bubbleStyle={{
-            top: (tooltipPosition[step]?.y ?? 0) - 150,
+            top: (tooltipPosition[step]?.y ?? 0) + scale(330),
             left: (tooltipPosition[step]?.x ?? 0) + 0,
           }}
           isLast={true}
@@ -183,17 +185,20 @@ export default function AlphabetDetail() {
           onPress={next}
         />
       )} */}
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  wrapper: {
     flex: 1,
+  },
+  container: {
     alignItems: "center",
     paddingVertical: 32,
     paddingHorizontal: 24,
     gap: 20,
+    paddingBottom: scale(220),
   },
   zoomBtnWrap: {
     position: "absolute",
@@ -328,5 +333,13 @@ const styles = StyleSheet.create({
     gap: scale(20),
     justifyContent: "center",
     alignItems: "center",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    paddingBottom: scale(56),
+    paddingTop: scale(10),
+    marginBottom: 0,
+    backgroundColor: C.bg.fff,
   },
 });
