@@ -1,5 +1,5 @@
 import { scale } from "@/app/utills/scale";
-import alphabetData from "@/data/alphabetData.json";
+import { useAlphabetData } from "@/hooks/useAlphabetData";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import * as Speech from "expo-speech";
 import { useEffect, useState } from "react";
@@ -15,9 +15,12 @@ import {
 const shuffle = <T,>(arr: T[]): T[] => [...arr].sort(() => Math.random() - 0.5);
 
 export default function SpellingQuiz() {
+  const [activeTab, setActiveTab] = useState("A");
+
   const { letter } = useLocalSearchParams<{ letter: string }>();
   const router = useRouter();
 
+  const { data: alphabetData, loading } = useAlphabetData();
   const data = alphabetData.find((item) => item.letter === letter);
 
   const [currentWordIdx, setCurrentWordIdx] = useState(0);
@@ -30,7 +33,7 @@ export default function SpellingQuiz() {
 
   useEffect(() => {
     if (currentWord) resetQuiz();
-  }, [currentWordIdx]);
+  }, [currentWordIdx, data]);
 
   if (!data || !currentWord) return null;
 
@@ -68,7 +71,7 @@ export default function SpellingQuiz() {
 
   const handleNext = () => {
     if (currentWordIdx + 1 >= data.words.length) {
-      router.replace(`/alphabet/${letter}`);
+      router.replace(`/alphabet/`);
     } else {
       setCurrentWordIdx((i) => i + 1);
     }

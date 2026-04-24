@@ -1,5 +1,5 @@
 import { scale } from "@/app/utills/scale";
-import alphabetData from "@/data/alphabetData.json";
+import { useAlphabetData } from "@/hooks/useAlphabetData";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import * as Speech from "expo-speech";
 import { useEffect, useRef, useState } from "react";
@@ -17,11 +17,7 @@ type QuizItem = { word: Word; choices: string[] };
 
 const shuffle = <T,>(arr: T[]): T[] => [...arr].sort(() => Math.random() - 0.5);
 
-const buildQuiz = (words: Word[]): QuizItem[] => {
-  const allKorean = alphabetData.flatMap((item) =>
-    item.words.map((w) => w.korean)
-  );
-
+const buildQuiz = (words: Word[], allKorean: string[]): QuizItem[] => {
   return words.map((word) => {
     const wrongs = shuffle(allKorean.filter((k) => k !== word.korean)).slice(
       0,
@@ -37,6 +33,7 @@ export default function QuizScreen() {
   const router = useRouter();
   const scrollRef = useRef<ScrollView>(null);
 
+  const { data: alphabetData, loading } = useAlphabetData();
   const data = alphabetData.find((item) => item.letter === letter);
   const [quiz, setQuiz] = useState<QuizItem[]>([]);
   const [current, setCurrent] = useState(0);
@@ -44,11 +41,28 @@ export default function QuizScreen() {
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
 
+  const allKorean = alphabetData.flatMap((item) =>
+    item.words.map((w) => w.korean)
+  );
   useEffect(() => {
-    if (data) setQuiz(buildQuiz(data.words));
-  }, [letter]);
+    if (data && allKorean.length > 0) {
+      setQuiz(buildQuiz(data.words, allKorean));
+    }
+  }, [letter, alphabetData]);
+  // useEffect(() => {
+  //   Alert.alert(
+  //     "확인",
+  //     `letter: ${letter}, alphabetData 길이: ${alphabetData.length}`
+  //   );
+  // }, [letter, alphabetData]);
+  if (loading || quiz.length === 0)
+    return (
+      <View style={styles.container}>
+        <Text>로딩중...</Text>
+      </View>
+    );
 
-  if (!data || quiz.length === 0) return null;
+  if (!data) return null;
 
   const currentQuiz = quiz[current];
   const isCorrect = selected === currentQuiz.word.korean;
@@ -109,7 +123,7 @@ export default function QuizScreen() {
         <TouchableOpacity
           style={styles.retryButton}
           onPress={() => {
-            setQuiz(buildQuiz(data.words));
+            setQuiz(buildQuiz(data.words, allKorean));
             setCurrent(0);
             setSelected(null);
             setScore(0);
