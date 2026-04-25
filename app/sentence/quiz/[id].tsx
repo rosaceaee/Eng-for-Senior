@@ -69,10 +69,17 @@ export default function SentenceQuiz() {
 
   // 블록 선택 (아래 보기 -> 위 정렬칸으로)
   const handleSelect = async (block: string, idx: number) => {
+    if (!data) return; // data 체크: undefined 예방
+
     const next = [...selected, block];
     const remaining = shuffledBlocks.filter((_, i) => i !== idx);
     setSelected(next);
     setShuffledBlocks(remaining);
+
+    if (next.length === data.blocks.length) {
+      // Alert.alert("저장 id", `${Number(id)}`);
+      await saveSentenceProgress(Number(id), isCorrect);
+    }
 
     // 블록을 다 골랐을 때 채점
     if (next.length === data.blocks.length) {
