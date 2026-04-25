@@ -95,11 +95,11 @@ export const useSentenceProgress = () => {
       if (data) result[id] = data;
     });
     setProgress(result);
-  }, []);
+  }, [sentenceData]); // 진도 갱신 시점이 문장 데이터 로드 이후가 되어야 하므로 sentenceData 의존성 추가
 
   useEffect(() => {
     load();
-  }, []);
+  }, [sentenceData]); // 진도 갱신 시점이 문장 데이터 로드 이후가 되어야 하므로 sentenceData 의존성 추가
 
   return { progress, reload: load };
 };

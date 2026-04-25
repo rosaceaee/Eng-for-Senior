@@ -35,7 +35,7 @@ export default function WrongNote() {
             <TouchableOpacity
               key={item.id}
               style={styles.wrongCard}
-              onPress={() => router.push(`/sentence/quiz/${item.id}`)}
+              onPress={() => router.replace(`/sentence/quiz/${item.id}`)}
             >
               <View style={styles.cardContent}>
                 <Text style={styles.korean}>{item.korean}</Text>

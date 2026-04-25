@@ -36,6 +36,8 @@ export const useAlphabetData = () => {
           }
           return acc;
         }, [] as AlphabetData[]);
+        // const qGroup = grouped.find((item) => item.letter === "Q");
+        // Alert.alert("테스트: Q 그룹 단어 수", `${qGroup?.words.length}개`);
 
         setData(grouped);
       }
