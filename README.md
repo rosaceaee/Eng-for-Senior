@@ -1,5 +1,7 @@
 # 부모님 기초영어 공부의 연습용 앱 ![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat&logo=react)  ![Expo](https://img.shields.io/badge/Expo-000020?style=flat&logo=expo)  ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript)
 
+#### 해당 앱 데이터 관리용 대시보드 레포지토리: [🔗 이동](https://github.com/rosaceaee/eng-for-senior-admin_)
+
 <div style="display: flex; gap: 20px; justify-content: center; align-items: center;">
    <img src="https://github.com/rosaceaee/Eng-for-Senior/blob/main/assets/images/thumb_main.jpeg" alt="thumbnail_main" style="width: 200px;"/>
    <img src="https://github.com/rosaceaee/Eng-for-Senior/blob/main/assets/images/thumb1.jpeg" alt="thumbnail_sample1" style="width: 200px;" />
@@ -7,7 +9,7 @@
 </div>
 
 ## 제작기
-[뒤늦은 효도를 앱으로 구현한 회고](https://velog.io/@rosaceaee/review-smallgift)
+[🔗 이동](https://velog.io/@rosaceaee/review-smallgift)
 
 ## 작업 계기
 
